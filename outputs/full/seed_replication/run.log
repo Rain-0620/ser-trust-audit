@@ -1,0 +1,20 @@
+﻿  seed 20261008: cached
+  seed 101: cached
+  seed 202: cached
+  seed 303: cached
+  seed 404: cached
+
+=== verdict by test-set draw (Session5, balanced 48/class) ===
+  condition                  101         202         303         404    20261008
+  gaussian_snr:7.5       ok 0.00     ok 0.00     ok 0.00     ok 0.00     ok 0.00
+  gaussian_snr:4        DEG 0.53    DEG 0.62     ok 0.12     ok 0.38     ok 0.40
+  lowpass:900            ok 0.25    DEG 0.84     ok 0.17     ok 0.18    DEG 0.53
+  lowpass:600           DEG 1.00    DEG 1.00    DEG 1.00    DEG 1.00    DEG 1.00
+
+=== stability ===
+  gaussian_snr:7.5   collapsed on 0/5 draws   [STABLE]
+  gaussian_snr:4     collapsed on 2/5 draws   [UNSTABLE]
+  lowpass:900        collapsed on 2/5 draws   [UNSTABLE]
+  lowpass:600        collapsed on 5/5 draws   [STABLE]
+
+wrote D:\ser-audit\outputs\full\seed_replication\seed_replication_summary.json

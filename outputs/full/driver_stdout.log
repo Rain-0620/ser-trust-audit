@@ -1,0 +1,42 @@
+﻿[09:59:54] ==============================================================================
+[09:59:54] full-scale audit experiment starting
+[09:59:54] phase A: 9 families x full Session5 (all 4-class utterances)
+[09:59:54] bootstrap_b=2000
+[09:59:54] SKIP A:gaussian_snr (n=12) (already complete: fam_gaussian_snr.json)
+[09:59:54] START A:lowpass (n=9)  ->  fam_lowpass.json
+[10:14:55] DONE  A:lowpass (n=9) in 901s
+[10:14:55] START A:highpass (n=4)  ->  fam_highpass.json
+[10:22:35] DONE  A:highpass (n=4) in 460s
+[10:22:35] START A:clipping (n=5)  ->  fam_clipping.json
+[10:31:41] DONE  A:clipping (n=5) in 546s
+[10:31:41] START A:mp3 (n=4)  ->  fam_mp3.json
+[10:39:50] DONE  A:mp3 (n=4) in 489s
+[10:39:50] START A:white_noise (n=4)  ->  fam_white_noise.json
+[10:47:33] DONE  A:white_noise (n=4) in 462s
+[10:47:33] START A:gain (n=4)  ->  fam_gain.json
+[10:54:47] DONE  A:gain (n=4) in 434s
+[10:54:47] START A:pitch (n=6)  ->  fam_pitch.json
+[11:06:46] DONE  A:pitch (n=6) in 719s
+[11:06:46] START A:timestretch (n=5)  ->  fam_timestretch.json
+[11:17:29] DONE  A:timestretch (n=5) in 643s
+[11:17:29] phase A complete in 77.6 min
+[11:17:29] ------------------------------------------------------------------------------
+[11:17:29] phase C: cross-session, conditions=gaussian_snr:7.5,gaussian_snr:4,lowpass:900,lowpass:600 per_class=48
+[11:17:29] START C:Session1  ->  xsession_Session1.json
+[11:18:57] DONE  C:Session1 in 88s
+[11:18:57] START C:Session2  ->  xsession_Session2.json
+[11:20:17] DONE  C:Session2 in 80s
+[11:20:17] START C:Session3  ->  xsession_Session3.json
+[11:21:38] DONE  C:Session3 in 82s
+[11:21:38] START C:Session4  ->  xsession_Session4.json
+[11:23:02] DONE  C:Session4 in 84s
+[11:23:02] START C:Session5  ->  xsession_Session5.json
+[11:24:18] DONE  C:Session5 in 76s
+[11:24:18] phase C complete in 6.8 min
+[11:24:18] ------------------------------------------------------------------------------
+[11:24:18] aggregating
+[11:24:18] wrote D:\ser-audit\outputs\full\full_experiment_summary.json
+[11:24:18] wrote D:\ser-audit\outputs\full\full_experiment_results.md
+[11:24:18] sample-design control: flips=['lowpass:900.0']
+[11:24:18] clean-arm accuracy across 9 independent sweeps: [0.7736]  (deterministic => single value expected)
+[11:24:18] TOTAL experiment wall time 84.4 min

@@ -1,0 +1,223 @@
+{
+  "command": "curve",
+  "model_fingerprint": "dac0f46128deec04",
+  "device": "cuda",
+  "session": "Session5",
+  "per_class": 24,
+  "family": "lowpass",
+  "unit": "Hz",
+  "range": [
+    1000.0,
+    500.0
+  ],
+  "results": [
+    {
+      "n": 96,
+      "accuracy": 0.5312,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5,
+      "mean_normalised_entropy": 0.3157,
+      "per_class_recall": {
+        "angry": 0.75,
+        "happy": 0.0,
+        "sad": 0.4167,
+        "neutral": 0.9583
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "condition": "lowpass:1000.0",
+      "family": "lowpass",
+      "value": 1000.0,
+      "unit": "Hz",
+      "wall_seconds": 6.3
+    },
+    {
+      "n": 96,
+      "accuracy": 0.5521,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5,
+      "mean_normalised_entropy": 0.2968,
+      "per_class_recall": {
+        "angry": 0.75,
+        "happy": 0.0417,
+        "sad": 0.5417,
+        "neutral": 0.875
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.30 (<= 0.30)",
+      "condition": "lowpass:937.5",
+      "family": "lowpass",
+      "value": 937.5,
+      "unit": "Hz",
+      "wall_seconds": 5.9
+    },
+    {
+      "n": 96,
+      "accuracy": 0.5729,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5312,
+      "mean_normalised_entropy": 0.2871,
+      "per_class_recall": {
+        "angry": 0.7083,
+        "happy": 0.0417,
+        "sad": 0.5417,
+        "neutral": 1.0
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.29 (<= 0.30)",
+      "condition": "lowpass:875.0",
+      "family": "lowpass",
+      "value": 875.0,
+      "unit": "Hz",
+      "wall_seconds": 6.0
+    },
+    {
+      "n": 96,
+      "accuracy": 0.4896,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.6354,
+      "mean_normalised_entropy": 0.2951,
+      "per_class_recall": {
+        "angry": 0.5,
+        "happy": 0.0417,
+        "sad": 0.4167,
+        "neutral": 1.0
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.30 (<= 0.30)",
+      "condition": "lowpass:812.5",
+      "family": "lowpass",
+      "value": 812.5,
+      "unit": "Hz",
+      "wall_seconds": 5.8
+    },
+    {
+      "n": 96,
+      "accuracy": 0.4792,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.6458,
+      "mean_normalised_entropy": 0.2876,
+      "per_class_recall": {
+        "angry": 0.5,
+        "happy": 0.0417,
+        "sad": 0.4167,
+        "neutral": 0.9583
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.29 (<= 0.30)",
+      "condition": "lowpass:750.0",
+      "family": "lowpass",
+      "value": 750.0,
+      "unit": "Hz",
+      "wall_seconds": 5.8
+    },
+    {
+      "n": 96,
+      "accuracy": 0.4688,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.6771,
+      "mean_normalised_entropy": 0.2589,
+      "per_class_recall": {
+        "angry": 0.5,
+        "happy": 0.0,
+        "sad": 0.4167,
+        "neutral": 0.9583
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.26 (<= 0.30)",
+      "condition": "lowpass:687.5",
+      "family": "lowpass",
+      "value": 687.5,
+      "unit": "Hz",
+      "wall_seconds": 5.9
+    },
+    {
+      "n": 96,
+      "accuracy": 0.4375,
+      "chance_level": 0.25,
+      "distinct_predictions": 3,
+      "majority_class": "neutral",
+      "majority_share": 0.7292,
+      "mean_normalised_entropy": 0.2402,
+      "per_class_recall": {
+        "angry": 0.375,
+        "happy": 0.0,
+        "sad": 0.375,
+        "neutral": 1.0
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.24 (<= 0.30)",
+      "condition": "lowpass:625.0",
+      "family": "lowpass",
+      "value": 625.0,
+      "unit": "Hz",
+      "wall_seconds": 5.9
+    },
+    {
+      "n": 96,
+      "accuracy": 0.375,
+      "chance_level": 0.25,
+      "distinct_predictions": 3,
+      "majority_class": "neutral",
+      "majority_share": 0.8229,
+      "mean_normalised_entropy": 0.2131,
+      "per_class_recall": {
+        "angry": 0.3333,
+        "happy": 0.0,
+        "sad": 0.1667,
+        "neutral": 1.0
+      },
+      "degenerate": true,
+      "collapse_reason": "majority share 0.82 (>= 0.75)",
+      "condition": "lowpass:562.5",
+      "family": "lowpass",
+      "value": 562.5,
+      "unit": "Hz",
+      "wall_seconds": 5.9
+    },
+    {
+      "n": 96,
+      "accuracy": 0.3542,
+      "chance_level": 0.25,
+      "distinct_predictions": 3,
+      "majority_class": "neutral",
+      "majority_share": 0.7917,
+      "mean_normalised_entropy": 0.2186,
+      "per_class_recall": {
+        "angry": 0.2917,
+        "happy": 0.0,
+        "sad": 0.1667,
+        "neutral": 0.9583
+      },
+      "degenerate": true,
+      "collapse_reason": "majority share 0.79 (>= 0.75)",
+      "condition": "lowpass:500.0",
+      "family": "lowpass",
+      "value": 500.0,
+      "unit": "Hz",
+      "wall_seconds": 5.9
+    }
+  ],
+  "first_degenerate": "lowpass:937.5",
+  "run_manifest": {
+    "tool": "ser-audit",
+    "generated_at": "2026-10-08T13:37:26.753967+00:00",
+    "seed": 20261008,
+    "host": {
+      "device": "cuda",
+      "gpu": null
+    }
+  }
+}

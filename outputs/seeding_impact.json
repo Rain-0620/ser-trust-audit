@@ -1,0 +1,14 @@
+{
+  "affected_families": [
+    "gaussian_snr",
+    "lowpass",
+    "highpass",
+    "white_noise"
+  ],
+  "unaffected_families": [
+    "gain",
+    "pitch",
+    "timestretch"
+  ],
+  "verdict_flips": []
+}

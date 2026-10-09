@@ -1,0 +1,984 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3e13fa4b-0bae-4cfd-8855-3e6ad8c69ea9</title><style>:root{color-scheme:light dark}body{font:14px/1.5 system-ui,sans-serif;max-width:52rem;margin:2rem auto;padding:0 1rem;color:#1c211e;background:#fff}.meta,.minor{color:#69707a;font-size:12px}.meta{border-bottom:1px solid #d6dbd5;margin-bottom:1rem;padding-bottom:.5rem}.node{margin:.7rem 0}.user{background:#f3f5f4;border-radius:6px;padding:.6rem}.assistant{padding:.6rem}.tool{border:1px solid #d6dbd5;border-radius:6px;padding:.4rem .6rem;color:#4d555f}.approval{border-left:3px solid #0e6b54;padding:.4rem .6rem}.content{white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.label{font-weight:600}.attachment{display:block}.compaction{text-align:center}@media(prefers-color-scheme:dark){body{color:#e7ece8;background:#151816}.user{background:#242925}.tool{border-color:#454c47;color:#c5ccc7}.meta,.minor{color:#abb3ad}}</style></head><body><header class="meta">3e13fa4b-0bae-4cfd-8855-3e6ad8c69ea9 · 2026-10-08T13:53:29.160Z · redacted · 37 items</header><main><section class="node user"><div class="label">User · local</div><div class="content">使用 ser-trust-audit 技能，审计工作区里的语音情感识别模型。
+
+工具调用形式（工作区根目录下执行）：
+.venv\Scripts\python.exe audit.py &lt;子命令&gt; [参数]
+
+可用子命令：
+catalog 列出所有扰动族、单位、建议扫描点
+probe --session Session5 --per-class 24 干净基线 + 标签空间 + 模型指纹 + 吞吐
+sweep --conditions family:value,... 跑指定的一组扰动条件
+curve --family F --from A --to B --points N 在一个扰动族上采样，定位阈值
+
+请按下面的要求执行：
+
+先跑 catalog 和 probe，掌握基线准确率、随机水平、标签空间和模型指纹。
+
+自己规划第一轮 sweep。要求：挑能区分不同失效机制的扰动（例如加性噪声、带宽损失、
+编解码失真、韵律变化各选一个），不要选同一机制的多个变体。每个条件加 --out 存一份 JSON。
+
+解读每个条件的全部指标，不只是准确率：
+
+accuracy 要和 chance_level 比，不要和 1.0 比
+mean_normalised_entropy 反映模型是否还在&quot;思考&quot;
+majority_share 和 degenerate 说明模型是否已经塌缩成只会回答一个类
+区分清楚&quot;模型不确定&quot;和&quot;模型不再回答问题&quot;——这是两种不同的失效。
+对任何 degenerate 的条件，或用 curve 发现准确率出现不连续跳变的族，必须用 curve
+在相邻采样点之间加密，把这个阈值定位出来，并说明采样间隔是多少。
+
+报告里每个数字都必须来自工具输出。你自己推断出来的阈值要标注为推断。
+
+最后输出一份信任边界报告，包含：
+
+审计范围（模型指纹、数据集划分、样本量、随机种子、设备）
+基线（干净准确率 vs 随机水平、吞吐）
+逐条件发现（准确率、熵、是否塌缩），明确指出模型能容忍什么、对什么变&quot;犹豫&quot;、对什么&quot;塌缩&quot;
+信任边界：在什么可测量的条件下不应采信该模型的输出
+局限：样本量、只测了一个 session、未测的扰动、以及哪些是推断而非观测
+不要为了让结果好看而修改 audit.py 或模型。不要报告任何没有从工具拿到的数字。</div></section>
+<section class="node minor">Context breakdown · 5 sections · 1359 tokens (estimated)</section>
+<section class="node assistant"><div class="label">Assistant</div><div class="content"></div></section>
+<details class="node tool"><summary>shell · completed</summary><div class="content">shell
+{&quot;command&quot;:&quot;cd &lt;workspace&gt;; .venv\\Scripts\\python.exe audit.py catalog&quot;,&quot;timeoutMs&quot;:120000}
+{
+  &quot;families&quot;: {
+    &quot;gaussian_snr&quot;: {
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;description&quot;: &quot;Additive white Gaussian noise at a target signal-to-noise ratio&quot;,
+      &quot;suggested_sweep&quot;: [
+        30,
+        20,
+        15,
+        10,
+        5,
+        2,
+        0,
+        -5
+      ],
+      &quot;higher_is_cleaner&quot;: true
+    },
+    &quot;lowpass&quot;: {
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;description&quot;: &quot;Low-pass filter: removes high-frequency content (bandwidth limitation)&quot;,
+      &quot;suggested_sweep&quot;: [
+        8000,
+        4000,
+        2000,
+        1000,
+        500
+      ],
+      &quot;higher_is_cleaner&quot;: true
+    },
+    &quot;highpass&quot;: {
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;description&quot;: &quot;High-pass filter: removes low-frequency content (telephone-like)&quot;,
+      &quot;suggested_sweep&quot;: [
+        100,
+        200,
+        400,
+        800
+      ],
+      &quot;higher_is_cleaner&quot;: false
+    },
+    &quot;clipping&quot;: {
+      &quot;unit&quot;: &quot;percentile&quot;,
+      &quot;description&quot;: &quot;Clipping distortion: hard-limits a percentage of the waveform&quot;,
+      &quot;suggested_sweep&quot;: [
+        30,
+        20,
+        10,
+        5,
+        1
+      ],
+      &quot;higher_is_cleaner&quot;: true
+    },
+    &quot;mp3&quot;: {
+      &quot;unit&quot;: &quot;kbps&quot;,
+      &quot;description&quot;: &quot;MP3 codec compression at a fixed bitrate (codec artefacts)&quot;,
+      &quot;suggested_sweep&quot;: [
+        64,
+        32,
+        16,
+        8
+      ],
+      &quot;higher_is_cleaner&quot;: true
+    },
+    &quot;pitch&quot;: {
+      &quot;unit&quot;: &quot;semitones&quot;,
+      &quot;description&quot;: &quot;Pitch shift without tempo change (speaker/prosody mismatch)&quot;,
+      &quot;suggested_sweep&quot;: [
+        6,
+        4,
+        2,
+        -2,
+        -4,
+        -6
+      ],
+      &quot;higher_is_cleaner&quot;: null
+    },
+    &quot;timestretch&quot;: {
+      &quot;unit&quot;: &quot;rate&quot;,
+      &quot;description&quot;: &quot;Time stretch without pitch change (speaking-rate mismatch)&quot;,
+      &quot;suggested_sweep&quot;: [
+        0.7,
+        0.85,
+        1.15,
+        1.3,
+        1.5
+      ],
+      &quot;higher_is_cleaner&quot;: null
+    },
+    &quot;gain&quot;: {
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;description&quot;: &quot;Global gain change (recording level mismatch)&quot;,
+      &quot;suggested_sweep&quot;: [
+        20,
+        10,
+        -10,
+        -20,
+        -30
+      ],
+      &quot;higher_is_cleaner&quot;: null
+    },
+    &quot;white_noise&quot;: {
+      &quot;unit&quot;: &quot;amplitude&quot;,
+      &quot;description&quot;: &quot;Additive uniform noise at a fixed amplitude (no SNR control)&quot;,
+      &quot;suggested_sweep&quot;: [
+        0.001,
+        0.005,
+        0.02,
+        0.05,
+        0.1
+      ],
+      &quot;higher_is_cleaner&quot;: true
+    }
+  },
+  &quot;classes&quot;: [
+    &quot;angry&quot;,
+    &quot;happy&quot;,
+    &quot;sad&quot;,
+    &quot;neutral&quot;
+  ],
+  &quot;collapse_rule&quot;: &quot;flagged degenerate when majority_share &gt;= 0.75 or mean_normalised_entropy &lt;= 0.30&quot;,
+  &quot;run_manifest&quot;: {
+    &quot;tool&quot;: &quot;ser-audit&quot;,
+    &quot;generated_at&quot;: &quot;2026-10-08T13:32:50.951202+00:00&quot;,
+    &quot;seed&quot;: 20261008,
+    &quot;host&quot;: {
+      &quot;device&quot;: null,
+      &quot;gpu&quot;: null
+    }
+  }
+}
+[exit 0]</div></details>
+<section class="node minor">$0.000 (estimated) · inference</section>
+<section class="node approval"><span class="label">Approval · allowed-session</span><div class="content">shell cd &lt;workspace&gt;; .venv\Scripts\python.exe audit.py catalog timeoutMs=120000</div></section>
+<section class="node minor">Context breakdown · 5 sections · 1359 tokens (estimated)</section>
+<section class="node assistant"><div class="label">Assistant</div><div class="content"></div></section>
+<details class="node tool"><summary>shell · completed</summary><div class="content">shell
+{&quot;command&quot;:&quot;cd &lt;workspace&gt;; .venv\\Scripts\\python.exe audit.py probe --session Session5 --per-class 24 --out evidence\\probe.json&quot;,&quot;timeoutMs&quot;:600000}
+{
+  &quot;command&quot;: &quot;probe&quot;,
+  &quot;model_dir&quot;: &quot;&lt;workspace&gt;\\models\\superb-er&quot;,
+  &quot;model_fingerprint&quot;: &quot;dac0f46128deec04&quot;,
+  &quot;model_labels&quot;: {
+    &quot;0&quot;: &quot;neu&quot;,
+    &quot;1&quot;: &quot;hap&quot;,
+    &quot;2&quot;: &quot;ang&quot;,
+    &quot;3&quot;: &quot;sad&quot;
+  },
+  &quot;device&quot;: &quot;cuda&quot;,
+  &quot;gpu&quot;: &quot;NVIDIA GeForce GTX 1650&quot;,
+  &quot;session&quot;: &quot;Session5&quot;,
+  &quot;per_class&quot;: 24,
+  &quot;class_distribution&quot;: {
+    &quot;angry&quot;: 24,
+    &quot;happy&quot;: 24,
+    &quot;sad&quot;: 24,
+    &quot;neutral&quot;: 24
+  },
+  &quot;ms_per_clip&quot;: 64.0,
+  &quot;clips_per_second&quot;: 15.64,
+  &quot;clean&quot;: {
+    &quot;n&quot;: 96,
+    &quot;accuracy&quot;: 0.6979,
+    &quot;chance_level&quot;: 0.25,
+    &quot;distinct_predictions&quot;: 4,
+    &quot;majority_class&quot;: &quot;sad&quot;,
+    &quot;majority_share&quot;: 0.2917,
+    &quot;mean_normalised_entropy&quot;: 0.369,
+    &quot;per_class_recall&quot;: {
+      &quot;angry&quot;: 0.625,
+      &quot;happy&quot;: 0.6667,
+      &quot;sad&quot;: 0.9583,
+      &quot;neutral&quot;: 0.5417
+    },
+    &quot;degenerate&quot;: false,
+    &quot;collapse_reason&quot;: null
+  },
+  &quot;sampled_utterances&quot;: [
+    &quot;Ses05F_script01_1_M035&quot;,
+    &quot;Ses05M_script03_2_M035&quot;,
+    &quot;Ses05F_script01_2_M017&quot;,
+    &quot;Ses05F_impro05_F023&quot;,
+    &quot;Ses05F_script03_2_F035&quot;,
+    &quot;Ses05M_script01_2_F005&quot;,
+    &quot;Ses05M_script01_1b_M032&quot;,
+    &quot;Ses05M_script03_2_M009&quot;,
+    &quot;Ses05M_script03_2_M040&quot;,
+    &quot;Ses05M_script03_2_M041&quot;,
+    &quot;Ses05M_script03_2_M033&quot;,
+    &quot;Ses05M_script01_1_F022&quot;,
+    &quot;Ses05F_impro05_F019&quot;,
+    &quot;Ses05M_script03_2_F017&quot;,
+    &quot;Ses05F_script03_2_M005&quot;,
+    &quot;Ses05F_impro05_F033&quot;,
+    &quot;Ses05F_impro08_M004&quot;,
+    &quot;Ses05M_script03_2_F035&quot;,
+    &quot;Ses05M_script03_2_M026&quot;,
+    &quot;Ses05M_script01_1b_M041&quot;,
+    &quot;Ses05F_impro05_F034&quot;,
+    &quot;Ses05F_script01_2_F010&quot;,
+    &quot;Ses05M_script03_2_F028&quot;,
+    &quot;Ses05M_script03_2_M029&quot;,
+    &quot;Ses05M_impro07_M000&quot;,
+    &quot;Ses05M_script03_1_M015&quot;,
+    &quot;Ses05M_impro03_M004&quot;,
+    &quot;Ses05F_script03_1_M027&quot;,
+    &quot;Ses05M_script03_1_M009&quot;,
+    &quot;Ses05M_script03_1_F002&quot;,
+    &quot;Ses05F_impro03_M062&quot;,
+    &quot;Ses05F_impro03_F041&quot;,
+    &quot;Ses05M_impro03_F031&quot;,
+    &quot;Ses05F_impro03_M045&quot;,
+    &quot;Ses05F_impro03_M065&quot;,
+    &quot;Ses05F_impro07_F013&quot;,
+    &quot;Ses05M_impro03_M029&quot;,
+    &quot;Ses05F_impro03_F008&quot;,
+    &quot;Ses05M_script03_1_M025&quot;,
+    &quot;Ses05M_impro07_M021&quot;,
+    &quot;Ses05F_script01_3_M039&quot;,
+    &quot;Ses05F_impro03_F001&quot;,
+    &quot;Ses05F_impro03_F047&quot;,
+    &quot;Ses05M_impro07_F023&quot;,
+    &quot;Ses05F_impro03_F005&quot;,
+    &quot;Ses05M_script03_1_F005&quot;,
+    &quot;Ses05M_script03_1_M030&quot;,
+    &quot;Ses05M_impro07_M032&quot;,
+    &quot;Ses05F_impro06_F016&quot;,
+    &quot;Ses05F_impro06_F025&quot;,
+    &quot;Ses05M_script01_3_F021&quot;,
+    &quot;Ses05F_script01_1_M005&quot;,
+    &quot;Ses05M_impro02_M013&quot;,
+    &quot;Ses05F_impro02_F036&quot;,
+    &quot;Ses05F_impro06_F029&quot;,
+    &quot;Ses05M_impro02_M029&quot;,
+    &quot;Ses05M_script01_1b_M005&quot;,
+    &quot;Ses05M_script02_2_F032&quot;,
+    &quot;Ses05F_impro06_M006&quot;,
+    &quot;Ses05F_impro02_F029&quot;,
+    &quot;Ses05M_impro02_F020&quot;,
+    &quot;Ses05M_script02_2_F023&quot;,
+    &quot;Ses05F_script01_3_M021&quot;,
+    &quot;Ses05M_script01_1_F005&quot;,
+    &quot;Ses05F_script01_1_M009&quot;,
+    &quot;Ses05F_script01_3_F006&quot;,
+    &quot;Ses05F_impro02_M024&quot;,
+    &quot;Ses05F_impro02_F009&quot;,
+    &quot;Ses05M_script02_2_F012&quot;,
+    &quot;Ses05F_script02_2_M031&quot;,
+    &quot;Ses05M_impro02_M000&quot;,
+    &quot;Ses05F_script01_1_F005&quot;,
+    &quot;Ses05F_impro04_M003&quot;,
+    &quot;Ses05M_impro08_M006&quot;,
+    &quot;Ses05F_script02_2_M010&quot;,
+    &quot;Ses05F_impro06_M023&quot;,
+    &quot;Ses05M_impro07_F030&quot;,
+    &quot;Ses05M_impro08_F012&quot;,
+    &quot;Ses05M_impro08_M022&quot;,
+    &quot;Ses05M_script03_1_F031&quot;,
+    &quot;Ses05F_impro05_M053&quot;,
+    &quot;Ses05M_impro04_F005&quot;,
+    &quot;Ses05M_impro04_F030&quot;,
+    &quot;Ses05M_impro04_F001&quot;,
+    &quot;Ses05F_impro08_F009&quot;,
+    &quot;Ses05F_impro04_M012&quot;,
+    &quot;Ses05F_impro05_F007&quot;,
+    &quot;Ses05F_impro08_F010&quot;,
+    &quot;Ses05F_impro04_M029&quot;,
+    &quot;Ses05M_impro05_M005&quot;,
+    &quot;Ses05F_impro06_M018&quot;,
+    &quot;Ses05M_script03_2_M011&quot;,
+    &quot;Ses05M_script03_1_M003&quot;,
+    &quot;Ses05F_script03_2_F004&quot;,
+    &quot;Ses05M_impro08_M016&quot;,
+    &quot;Ses05F_impro07_F007&quot;
+  ],
+  &quot;run_manifest&quot;: {
+    &quot;tool&quot;: &quot;ser-audit&quot;,
+    &quot;generated_at&quot;: &quot;2026-10-08T13:33:16.834539+00:00&quot;,
+    &quot;seed&quot;: 20261008,
+    &quot;host&quot;: {
+      &quot;device&quot;: &quot;cuda&quot;,
+      &quot;gpu&quot;: &quot;NVIDIA GeForce GTX 1650&quot;
+    }
+  }
+}
+[stderr]
+[audit] loading model &lt;workspace&gt;\models\superb-er
+Loading weights:   0%|          | 0/216 [00:00&lt;?, ?it/s]Loading weights: 10</div></details>
+<section class="node minor">$0.000 (estimated) · inference</section>
+<section class="node minor">Context breakdown · 5 sections · 1359 tokens (estimated)</section>
+<section class="node assistant"><div class="label">Assistant</div><div class="content"></div></section>
+<details class="node tool"><summary>shell · completed</summary><div class="content">shell
+{&quot;command&quot;:&quot;cd &lt;workspace&gt;; .venv\\Scripts\\python.exe audit.py sweep --conditions gaussian_snr:10,lowpass:1000,mp3:32,pitch:4 --out evidence\\sweep1.json&quot;,&quot;timeoutMs&quot;:600000}
+{
+  &quot;command&quot;: &quot;sweep&quot;,
+  &quot;model_fingerprint&quot;: &quot;dac0f46128deec04&quot;,
+  &quot;device&quot;: &quot;cuda&quot;,
+  &quot;session&quot;: &quot;Session5&quot;,
+  &quot;per_class&quot;: 24,
+  &quot;n_utterances&quot;: 96,
+  &quot;results&quot;: [
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.4688,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.5938,
+      &quot;mean_normalised_entropy&quot;: 0.4687,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0417,
+        &quot;happy&quot;: 0.8333,
+        &quot;sad&quot;: 0.4167,
+        &quot;neutral&quot;: 0.5833
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;gaussian_snr:10.0&quot;,
+      &quot;family&quot;: &quot;gaussian_snr&quot;,
+      &quot;value&quot;: 10.0,
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;wall_seconds&quot;: 6.4
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.5521,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.5104,
+      &quot;mean_normalised_entropy&quot;: 0.309,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.7917,
+        &quot;happy&quot;: 0.0,
+        &quot;sad&quot;: 0.4583,
+        &quot;neutral&quot;: 0.9583
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;lowpass:1000.0&quot;,
+      &quot;family&quot;: &quot;lowpass&quot;,
+      &quot;value&quot;: 1000.0,
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;wall_seconds&quot;: 5.7
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.7292,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;sad&quot;,
+      &quot;majority_share&quot;: 0.2708,
+      &quot;mean_normalised_entropy&quot;: 0.3772,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.6667,
+        &quot;happy&quot;: 0.6667,
+        &quot;sad&quot;: 0.9167,
+        &quot;neutral&quot;: 0.6667
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;mp3:32.0&quot;,
+      &quot;family&quot;: &quot;mp3&quot;,
+      &quot;value&quot;: 32.0,
+      &quot;unit&quot;: &quot;kbps&quot;,
+      &quot;wall_seconds&quot;: 6.3
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.6354,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;angry&quot;,
+      &quot;majority_share&quot;: 0.4583,
+      &quot;mean_normalised_entropy&quot;: 0.3647,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.9167,
+        &quot;happy&quot;: 0.375,
+        &quot;sad&quot;: 0.7083,
+        &quot;neutral&quot;: 0.5417
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;pitch:4.0&quot;,
+      &quot;family&quot;: &quot;pitch&quot;,
+      &quot;value&quot;: 4.0,
+      &quot;unit&quot;: &quot;semitones&quot;,
+      &quot;wall_seconds&quot;: 7.3
+    }
+  ],
+  &quot;degenerate_conditions&quot;: [],
+  &quot;run_manifest&quot;: {
+    &quot;tool&quot;: &quot;ser-audit&quot;,
+    &quot;generated_at&quot;: &quot;2026-10-08T13:34:00.236928+00:00&quot;,
+    &quot;seed&quot;: 20261008,
+    &quot;host&quot;: {
+      &quot;device&quot;: &quot;cuda&quot;,
+      &quot;gpu&quot;: null
+    }
+  }
+}
+[stderr]
+[audit] loading model &lt;workspace&gt;\models\superb-er
+Loading weights:   0%|          | 0/216 [00:00&lt;?, ?it/s]Loading weights: 100%|��������������������| 216/216 [00:00&lt;00:00, 20395.53it/s]
+[audit] device=cuda gpu=NVIDIA GeForce GTX 1650
+[audit] loading test set Session5 per_class=24
+[audit] 96 utterances, distribution={np.str_(&#39;angry&#39;): 24, np.str_(&#39;happy&#39;): 24, np.str_(&#39;sad&#39;): 24, np.str_(&#39;neutral&#39;): 24}
+[audit] sweeping 4 condition(s)
+    gaussian_snr:10.0      acc=0.469 entropy=0.469 majority=0.59
+    lowpass:1000.0         acc=0.552 entropy=0.309 majority=0.51
+    mp3:32.0               acc=0.729 entropy=0.377 majority=0.27
+    pitch:4.0              acc=0.635 entropy=0.365 majority=0.46
+    wrote evidence\sweep1.json
+[exit 0]</div></details>
+<section class="node minor">$0.000 (estimated) · inference</section>
+<section class="node minor">Context breakdown · 5 sections · 1359 tokens (estimated)</section>
+<section class="node assistant"><div class="label">Assistant</div><div class="content"></div></section>
+<details class="node tool"><summary>shell · completed</summary><div class="content">shell
+{&quot;command&quot;:&quot;cd &lt;workspace&gt;; .venv\\Scripts\\python.exe audit.py sweep --conditions gaussian_snr:0,lowpass:500,pitch:-4,mp3:16,clipping:20,timestretch:1.3,gain:-20 --out evidence\\sweep2.json&quot;,&quot;timeoutMs&quot;:600000}
+{
+  &quot;command&quot;: &quot;sweep&quot;,
+  &quot;model_fingerprint&quot;: &quot;dac0f46128deec04&quot;,
+  &quot;device&quot;: &quot;cuda&quot;,
+  &quot;session&quot;: &quot;Session5&quot;,
+  &quot;per_class&quot;: 24,
+  &quot;n_utterances&quot;: 96,
+  &quot;results&quot;: [
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.2812,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 2,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.8333,
+      &quot;mean_normalised_entropy&quot;: 0.2473,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0,
+        &quot;happy&quot;: 0.875,
+        &quot;sad&quot;: 0.0,
+        &quot;neutral&quot;: 0.25
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;majority share 0.83 (&gt;= 0.75)&quot;,
+      &quot;condition&quot;: &quot;gaussian_snr:0.0&quot;,
+      &quot;family&quot;: &quot;gaussian_snr&quot;,
+      &quot;value&quot;: 0.0,
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;wall_seconds&quot;: 6.3
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.3958,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 3,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.7604,
+      &quot;mean_normalised_entropy&quot;: 0.1664,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.375,
+        &quot;happy&quot;: 0.0,
+        &quot;sad&quot;: 0.2083,
+        &quot;neutral&quot;: 1.0
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;majority share 0.76 (&gt;= 0.75)&quot;,
+      &quot;condition&quot;: &quot;lowpass:500.0&quot;,
+      &quot;family&quot;: &quot;lowpass&quot;,
+      &quot;value&quot;: 500.0,
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;wall_seconds&quot;: 5.7
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.5312,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;sad&quot;,
+      &quot;majority_share&quot;: 0.3854,
+      &quot;mean_normalised_entropy&quot;: 0.4293,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.5,
+        &quot;happy&quot;: 0.125,
+        &quot;sad&quot;: 0.8333,
+        &quot;neutral&quot;: 0.6667
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;pitch:-4.0&quot;,
+      &quot;family&quot;: &quot;pitch&quot;,
+      &quot;value&quot;: -4.0,
+      &quot;unit&quot;: &quot;semitones&quot;,
+      &quot;wall_seconds&quot;: 7.2
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.5208,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.6562,
+      &quot;mean_normalised_entropy&quot;: 0.3446,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.625,
+        &quot;happy&quot;: 0.0417,
+        &quot;sad&quot;: 0.4583,
+        &quot;neutral&quot;: 0.9583
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;mp3:16.0&quot;,
+      &quot;family&quot;: &quot;mp3&quot;,
+      &quot;value&quot;: 16.0,
+      &quot;unit&quot;: &quot;kbps&quot;,
+      &quot;wall_seconds&quot;: 6.2
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.6979,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;sad&quot;,
+      &quot;majority_share&quot;: 0.2917,
+      &quot;mean_normalised_entropy&quot;: 0.369,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.625,
+        &quot;happy&quot;: 0.6667,
+        &quot;sad&quot;: 0.9583,
+        &quot;neutral&quot;: 0.5417
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;clipping:20.0&quot;,
+      &quot;family&quot;: &quot;clipping&quot;,
+      &quot;value&quot;: 20.0,
+      &quot;unit&quot;: &quot;percentile&quot;,
+      &quot;wall_seconds&quot;: 5.7
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.4688,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.6146,
+      &quot;mean_normalised_entropy&quot;: 0.3553,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.7083,
+        &quot;happy&quot;: 0.2083,
+        &quot;sad&quot;: 0.125,
+        &quot;neutral&quot;: 0.8333
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;timestretch:1.3&quot;,
+      &quot;family&quot;: &quot;timestretch&quot;,
+      &quot;value&quot;: 1.3,
+      &quot;unit&quot;: &quot;rate&quot;,
+      &quot;wall_seconds&quot;: 6.8
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.6458,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.3854,
+      &quot;mean_normalised_entropy&quot;: 0.3861,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.5833,
+        &quot;happy&quot;: 0.7917,
+        &quot;sad&quot;: 0.4167,
+        &quot;neutral&quot;: 0.7917
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;gain:-20.0&quot;,
+      &quot;fa</div></details>
+<section class="node minor">$0.000 (estimated) · inference</section>
+<section class="node minor">Context breakdown · 5 sections · 1359 tokens (estimated)</section>
+<section class="node assistant"><div class="label">Assistant</div><div class="content"></div></section>
+<details class="node tool"><summary>shell · completed</summary><div class="content">shell
+{&quot;command&quot;:&quot;cd &lt;workspace&gt;; .venv\\Scripts\\python.exe audit.py curve --family gaussian_snr --from 10 --to 0 --points 9 --out evidence\\curve_snr.json&quot;,&quot;timeoutMs&quot;:600000}
+{
+  &quot;command&quot;: &quot;curve&quot;,
+  &quot;model_fingerprint&quot;: &quot;dac0f46128deec04&quot;,
+  &quot;device&quot;: &quot;cuda&quot;,
+  &quot;session&quot;: &quot;Session5&quot;,
+  &quot;per_class&quot;: 24,
+  &quot;family&quot;: &quot;gaussian_snr&quot;,
+  &quot;unit&quot;: &quot;dB&quot;,
+  &quot;range&quot;: [
+    10.0,
+    0.0
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.4583,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.5938,
+      &quot;mean_normalised_entropy&quot;: 0.4692,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0833,
+        &quot;happy&quot;: 0.75,
+        &quot;sad&quot;: 0.4583,
+        &quot;neutral&quot;: 0.5417
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;gaussian_snr:10.0&quot;,
+      &quot;family&quot;: &quot;gaussian_snr&quot;,
+      &quot;value&quot;: 10.0,
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;wall_seconds&quot;: 6.4
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.4167,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.6667,
+      &quot;mean_normalised_entropy&quot;: 0.4591,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0417,
+        &quot;happy&quot;: 0.8333,
+        &quot;sad&quot;: 0.3333,
+        &quot;neutral&quot;: 0.4583
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;gaussian_snr:8.75&quot;,
+      &quot;family&quot;: &quot;gaussian_snr&quot;,
+      &quot;value&quot;: 8.75,
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;wall_seconds&quot;: 5.8
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.3646,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 3,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.7604,
+      &quot;mean_normalised_entropy&quot;: 0.4264,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0,
+        &quot;happy&quot;: 0.8333,
+        &quot;sad&quot;: 0.2917,
+        &quot;neutral&quot;: 0.3333
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;majority share 0.76 (&gt;= 0.75)&quot;,
+      &quot;condition&quot;: &quot;gaussian_snr:7.5&quot;,
+      &quot;family&quot;: &quot;gaussian_snr&quot;,
+      &quot;value&quot;: 7.5,
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;wall_seconds&quot;: 5.8
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.3958,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 3,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.7708,
+      &quot;mean_normalised_entropy&quot;: 0.4155,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0,
+        &quot;happy&quot;: 0.875,
+        &quot;sad&quot;: 0.25,
+        &quot;neutral&quot;: 0.4583
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;majority share 0.77 (&gt;= 0.75)&quot;,
+      &quot;condition&quot;: &quot;gaussian_snr:6.25&quot;,
+      &quot;family&quot;: &quot;gaussian_snr&quot;,
+      &quot;value&quot;: 6.25,
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;wall_seconds&quot;: 5.8
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.3229,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 3,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.8021,
+      &quot;mean_normalised_entropy&quot;: 0.3692,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0,
+        &quot;happy&quot;: 0.8333,
+        &quot;sad&quot;: 0.2083,
+        &quot;neutral&quot;: 0.25
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;majority share 0.80 (&gt;= 0.75)&quot;,
+      &quot;condition&quot;: &quot;gaussian_snr:5.0&quot;,
+      &quot;family&quot;: &quot;gaussian_snr&quot;,
+      &quot;value&quot;: 5.0,
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;wall_seconds&quot;: 5.8
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.3229,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 3,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.8125,
+      &quot;mean_normalised_entropy&quot;: 0.3156,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0,
+        &quot;happy&quot;: 0.7917,
+        &quot;sad&quot;: 0.1667,
+        &quot;neutral&quot;: 0.3333
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;majority share 0.81 (&gt;= 0.75)&quot;,
+      &quot;condition&quot;: &quot;gaussian_snr:3.75&quot;,
+      &quot;family&quot;: &quot;gaussian_snr&quot;,
+      &quot;value&quot;: 3.75,
+      &quot;unit&quot;: &quot;dB&quot;,
+      &quot;wall_seconds&quot;: 5.8
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.2604,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 3,
+      &quot;majority_class&quot;: &quot;happy&quot;,
+      &quot;majority_share&quot;: 0.8333,
+      &quot;mean_normalised_entropy&quot;: 0.3024,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.0,
+        &quot;happy&quot;: 0.75,
+        &quot;sad&quot;: 0.0833,</div></details>
+<section class="node minor">$0.000 (estimated) · inference</section>
+<section class="node minor">Context breakdown · 5 sections · 1359 tokens (estimated)</section>
+<section class="node assistant"><div class="label">Assistant</div><div class="content"></div></section>
+<details class="node tool"><summary>shell · completed</summary><div class="content">shell
+{&quot;command&quot;:&quot;cd &lt;workspace&gt;; .venv\\Scripts\\python.exe audit.py curve --family lowpass --from 1000 --to 500 --points 9 --out evidence\\curve_lowpass.json&quot;,&quot;timeoutMs&quot;:600000}
+{
+  &quot;command&quot;: &quot;curve&quot;,
+  &quot;model_fingerprint&quot;: &quot;dac0f46128deec04&quot;,
+  &quot;device&quot;: &quot;cuda&quot;,
+  &quot;session&quot;: &quot;Session5&quot;,
+  &quot;per_class&quot;: 24,
+  &quot;family&quot;: &quot;lowpass&quot;,
+  &quot;unit&quot;: &quot;Hz&quot;,
+  &quot;range&quot;: [
+    1000.0,
+    500.0
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.5312,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.5,
+      &quot;mean_normalised_entropy&quot;: 0.3157,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.75,
+        &quot;happy&quot;: 0.0,
+        &quot;sad&quot;: 0.4167,
+        &quot;neutral&quot;: 0.9583
+      },
+      &quot;degenerate&quot;: false,
+      &quot;collapse_reason&quot;: null,
+      &quot;condition&quot;: &quot;lowpass:1000.0&quot;,
+      &quot;family&quot;: &quot;lowpass&quot;,
+      &quot;value&quot;: 1000.0,
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;wall_seconds&quot;: 6.3
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.5521,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.5,
+      &quot;mean_normalised_entropy&quot;: 0.2968,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.75,
+        &quot;happy&quot;: 0.0417,
+        &quot;sad&quot;: 0.5417,
+        &quot;neutral&quot;: 0.875
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;mean entropy 0.30 (&lt;= 0.30)&quot;,
+      &quot;condition&quot;: &quot;lowpass:937.5&quot;,
+      &quot;family&quot;: &quot;lowpass&quot;,
+      &quot;value&quot;: 937.5,
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;wall_seconds&quot;: 5.9
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.5729,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.5312,
+      &quot;mean_normalised_entropy&quot;: 0.2871,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.7083,
+        &quot;happy&quot;: 0.0417,
+        &quot;sad&quot;: 0.5417,
+        &quot;neutral&quot;: 1.0
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;mean entropy 0.29 (&lt;= 0.30)&quot;,
+      &quot;condition&quot;: &quot;lowpass:875.0&quot;,
+      &quot;family&quot;: &quot;lowpass&quot;,
+      &quot;value&quot;: 875.0,
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;wall_seconds&quot;: 6.0
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.4896,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.6354,
+      &quot;mean_normalised_entropy&quot;: 0.2951,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.5,
+        &quot;happy&quot;: 0.0417,
+        &quot;sad&quot;: 0.4167,
+        &quot;neutral&quot;: 1.0
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;mean entropy 0.30 (&lt;= 0.30)&quot;,
+      &quot;condition&quot;: &quot;lowpass:812.5&quot;,
+      &quot;family&quot;: &quot;lowpass&quot;,
+      &quot;value&quot;: 812.5,
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;wall_seconds&quot;: 5.8
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.4792,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.6458,
+      &quot;mean_normalised_entropy&quot;: 0.2876,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.5,
+        &quot;happy&quot;: 0.0417,
+        &quot;sad&quot;: 0.4167,
+        &quot;neutral&quot;: 0.9583
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;mean entropy 0.29 (&lt;= 0.30)&quot;,
+      &quot;condition&quot;: &quot;lowpass:750.0&quot;,
+      &quot;family&quot;: &quot;lowpass&quot;,
+      &quot;value&quot;: 750.0,
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;wall_seconds&quot;: 5.8
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.4688,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 4,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.6771,
+      &quot;mean_normalised_entropy&quot;: 0.2589,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.5,
+        &quot;happy&quot;: 0.0,
+        &quot;sad&quot;: 0.4167,
+        &quot;neutral&quot;: 0.9583
+      },
+      &quot;degenerate&quot;: true,
+      &quot;collapse_reason&quot;: &quot;mean entropy 0.26 (&lt;= 0.30)&quot;,
+      &quot;condition&quot;: &quot;lowpass:687.5&quot;,
+      &quot;family&quot;: &quot;lowpass&quot;,
+      &quot;value&quot;: 687.5,
+      &quot;unit&quot;: &quot;Hz&quot;,
+      &quot;wall_seconds&quot;: 5.9
+    },
+    {
+      &quot;n&quot;: 96,
+      &quot;accuracy&quot;: 0.4375,
+      &quot;chance_level&quot;: 0.25,
+      &quot;distinct_predictions&quot;: 3,
+      &quot;majority_class&quot;: &quot;neutral&quot;,
+      &quot;majority_share&quot;: 0.7292,
+      &quot;mean_normalised_entropy&quot;: 0.2402,
+      &quot;per_class_recall&quot;: {
+        &quot;angry&quot;: 0.375,
+        &quot;happy&quot;: 0.0,
+        &quot;sad&quot;: 0.375,
+        &quot;neutral&quot;: 1.0
+</div></details>
+<section class="node minor">$0.000 (estimated) · inference</section>
+<section class="node minor">Context breakdown · 5 sections · 1359 tokens (estimated)</section>
+<section class="node assistant"><div class="label">Assistant</div><div class="content">I now have all the evidence I need: the two degenerate conditions (SNR ≤ 0 dB, lowpass ≤ 500 Hz) are bracketed, and both curves show where the model stops answering. Now I&#39;ll write the final trust boundary report.
+
+</div></section>
+<details class="node tool"><summary>write · completed</summary><div class="content">write
+{&quot;content&quot;:&quot;# Trust Boundary Report — SER Model `superb-er`\n\nAll numbers below are traceable to the JSON files in `evidence/` (probe.json, sweep1.json,\nsweep2.json, curve_snr.json, curve_lowpass.json). No numbers have been fabricated.\n\n---\n\n## 1. Scope\n\n- Model: `&lt;workspace&gt;\\models\\superb-er`\n- **Model fingerprint: `dac0f46128deec04`**\n- Model labels: `0=neu, 1=hap, 2=ang, 3=sad` (catalog reports 4 classes: angry, happy, sad, neutral)\n- Dataset split: **Session5 only** of the IEMOCAP-style dataset\n- Per-class sample: **24** → **96 utterances** total\n- Seed: **20261008** (per run manifest)\n- Device: **CUDA — NVIDIA GeForce GTX 1650**\n- Chance level for 4 classes: **0.25**\n- Collapse rule: `degenerate` when `majority_share &gt;= 0.75` **or** `mean_normalised_entropy &lt;= 0.30`\n\n---\n\n## 2. Baseline (clean, probe.json)\n\n- Clean accuracy: **0.6979** (vs. chance 0.25 → 2.79× chance; ~0.448 above chance)\n- Majority share: 0.2917 (class `sad`)\n- Mean normalised entropy: **0.369**\n- `degenerate: false`\n- Throughput: **15.64 clips/s** (64 ms per clip)\n- Per-class recall: angry 0.625, happy 0.6667, sad 0.9583, neutral 0.5417\n- Notable: even clean baseline shows a mild prior toward `sad` and weak recall on `neutral`.\n\n---\n\n## 3. Findings — Round 1 sweep (sweep1.json) — different mechanisms\n\n| Condition | Accuracy | Δ vs. clean (0.698) | Entropy | Majority | Distinct preds | Degenerate? |\n|---|---|---|---|---|---|---|\n| clean (probe) | 0.698 | — | 0.369 | 0.29 | 4 | no |\n| `gaussian_snr:10` dB (additive noise) | **0.469** | −0.229 | 0.469 | 0.59 | 4 | no |\n| `lowpass:1000` Hz (bandwidth loss) | **0.552** | −0.146 | 0.309 | 0.51 | 4 | no (borderline) |\n| `mp3:32` kbps (codec) | **0.729** | **+0.031** | 0.377 | 0.27 | 4 | no |\n| `pitch:+4` semitones (prosody) | **0.635** | −0.063 | 0.365 | 0.46 | 4 | no |\n\n### Interpretation\n\n- **MP3 at 32 kbps**: model is *tolerant* — accuracy actually exceeds clean (0.729 &gt; 0.698). Codec artefacts at 32 kbps do not harm this model.\n- **Pitch shift 
+created trust_boundary_report.md (11858 chars)</div></details>
+<section class="node minor">$0.000 (estimated) · inference</section>
+<section class="node approval"><span class="label">Approval · allowed-once</span><div class="content">write trust_boundary_report.md (11858 chars)</div></section>
+<section class="node minor">Context breakdown · 5 sections · 1359 tokens (estimated)</section>
+<section class="node assistant"><div class="label">Assistant</div><div class="content">已按 ser-trust-audit 协议完成审计，报告写入 `&lt;workspace&gt;\trust_boundary_report.md`，全部证据 JSON 保存在 `&lt;workspace&gt;\evidence\`。
+
+## 核心结论
+
+**审计范围**
+- 模型指纹 `dac0f46128deec04`（`models/superb-er`），4 类（neu/hap/ang/sad），Session5，24/类共 96 条，种子 20261008，CUDA GTX 1650。
+
+**基线（probe）**
+- 干净准确率 **0.698**（vs 随机 0.25），主类 sad 占比 0.29，熵 0.369，非塌缩；吞吐 15.64 clips/s。
+
+**逐条件发现**
+- **可容忍**：MP3 32 kbps（0.729）、gain −20 dB（0.646）、pitch ±4 半音（0.635 / 0.531）。
+- **&quot;犹豫&quot;（unsure，仍在回答）**：SNR 10 dB（准确率 0.469、熵升到 0.469）、timestretch 1.3（0.469）、MP3 16 kbps（0.521）。
+- **&quot;塌缩&quot;（degenerate，不再回答问题）**：
+  - **gaussian_snr ≤ 7.5 dB** → 全部塌缩到 &quot;happy&quot;（majority 0.76→0.89）。曲线 10→0 dB、步长 **1.25 dB**，首个 degenerate 在 7.5 dB；阈值**推断**在 7.5–8.75 dB 之间（±1.25 dB）。majority_share 在 8.75→7.5 之间从 0.667 跳到 0.760，是真实的不连续跳变。
+  - **lowpass ≤ 937.5 Hz** → 塌缩到 &quot;neutral&quot;。曲线 1000→500 Hz、步长 **62.5 Hz**，首个 degenerate 在 937.5 Hz（触发的是熵规则 ≤0.30，不是 majority 规则——与 SNR 的塌缩签名不同）；阈值**推断**在 937.5–1000 Hz 之间（±62.5 Hz）。
+
+**信任边界**：SNR 低于约 7.5 dB、低通截止低于 1000 Hz、或任何 `majority_share≥0.75 / 熵≤0.30` 的条件下，不应采信该模型输出。
+
+**必须向你明确报告的测量失败**
+- `clipping:20` 变换对全部 96 条 clip 报 `TypeError`，工具回退成干净信号——结果与 clean 逐位相同（0.698/0.369/0.29）。**clipping 家族在本次审计中视为未测量**，不是&quot;模型对削波稳健&quot;的证据。我没有修改 `audit.py`，按协议如实上报。
+
+**局限**
+- n=96，±2 SE≈±0.10，小于 0.05 的条件差异（如 MP3 32 kbps 略高于 clean）不具统计意义；
+- 只测了 Session5；
+- highpass、white_noise、clipping 未测；
+- 所有阈值都是相邻采样点之间的**推断**（步长已注明）；
+- 未做不同种子/会话的重复运行。</div></section>
+<section class="node minor">$0.000 (estimated) · inference</section>
+<section class="node minor">$0.000 (estimated) · title</section></main></body></html>

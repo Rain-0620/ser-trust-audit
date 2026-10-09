@@ -1,0 +1,108 @@
+{
+  "command": "sweep",
+  "model_fingerprint": "dac0f46128deec04",
+  "device": "cuda",
+  "session": "Session5",
+  "per_class": 24,
+  "n_utterances": 96,
+  "results": [
+    {
+      "n": 96,
+      "accuracy": 0.4688,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.5938,
+      "mean_normalised_entropy": 0.4687,
+      "per_class_recall": {
+        "angry": 0.0417,
+        "happy": 0.8333,
+        "sad": 0.4167,
+        "neutral": 0.5833
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "condition": "gaussian_snr:10.0",
+      "family": "gaussian_snr",
+      "value": 10.0,
+      "unit": "dB",
+      "wall_seconds": 6.4
+    },
+    {
+      "n": 96,
+      "accuracy": 0.5521,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5104,
+      "mean_normalised_entropy": 0.309,
+      "per_class_recall": {
+        "angry": 0.7917,
+        "happy": 0.0,
+        "sad": 0.4583,
+        "neutral": 0.9583
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "condition": "lowpass:1000.0",
+      "family": "lowpass",
+      "value": 1000.0,
+      "unit": "Hz",
+      "wall_seconds": 5.7
+    },
+    {
+      "n": 96,
+      "accuracy": 0.7292,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "sad",
+      "majority_share": 0.2708,
+      "mean_normalised_entropy": 0.3772,
+      "per_class_recall": {
+        "angry": 0.6667,
+        "happy": 0.6667,
+        "sad": 0.9167,
+        "neutral": 0.6667
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "condition": "mp3:32.0",
+      "family": "mp3",
+      "value": 32.0,
+      "unit": "kbps",
+      "wall_seconds": 6.3
+    },
+    {
+      "n": 96,
+      "accuracy": 0.6354,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "angry",
+      "majority_share": 0.4583,
+      "mean_normalised_entropy": 0.3647,
+      "per_class_recall": {
+        "angry": 0.9167,
+        "happy": 0.375,
+        "sad": 0.7083,
+        "neutral": 0.5417
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "condition": "pitch:4.0",
+      "family": "pitch",
+      "value": 4.0,
+      "unit": "semitones",
+      "wall_seconds": 7.3
+    }
+  ],
+  "degenerate_conditions": [],
+  "run_manifest": {
+    "tool": "ser-audit",
+    "generated_at": "2026-10-08T13:34:00.236928+00:00",
+    "seed": 20261008,
+    "host": {
+      "device": "cuda",
+      "gpu": null
+    }
+  }
+}

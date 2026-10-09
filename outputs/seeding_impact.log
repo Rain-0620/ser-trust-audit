@@ -1,0 +1,22 @@
+﻿measuring one representative condition per family at full scale (n=1241) ...
+  complete
+
+=== impact of the seeding fix, by family ===
+  family         condition          batch(before)  battery(after)    delta  changed fields
+  gaussian_snr   gaussian_snr:30.0         0.7325          0.7214  -0.0111  16 fields  (accuracy, accuracy_ci95, balanced_accuracy, balanced_accuracy_ci95...)
+  lowpass        lowpass:2000.0            0.6246          0.6176  -0.0070  16 fields  (accuracy, accuracy_ci95, balanced_accuracy, balanced_accuracy_ci95...)
+  highpass       highpass:400.0            0.6865          0.6799  -0.0066  15 fields  (accuracy, accuracy_ci95, balanced_accuracy, balanced_accuracy_ci95...)
+  clipping       clipping:10.0        (not in the earlier run)
+  mp3            mp3:32.0             (not in the earlier run)
+  white_noise    white_noise:0.02          0.2856          0.2892  +0.0036  16 fields  (accuracy, accuracy_ci95, balanced_accuracy, balanced_accuracy_ci95...)
+  gain           gain:-20.0                0.6006          0.6006  +0.0000  unchanged
+  pitch          pitch:4.0                 0.6288          0.6288  +0.0000  unchanged
+  timestretch    timestretch:1.3           0.4940          0.4940  +0.0000  unchanged
+
+  affected by the fix  : ['gaussian_snr', 'lowpass', 'highpass', 'white_noise']
+  unaffected           : ['gain', 'pitch', 'timestretch']
+
+=== did any verdict change? ===
+  verdict flips: none
+
+wrote D:\ser-audit\outputs\seeding_impact.json

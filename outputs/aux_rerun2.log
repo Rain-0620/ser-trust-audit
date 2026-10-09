@@ -1,0 +1,21 @@
+﻿=== cross-session arm (balanced 48/class per session) ===
+  Session1: cached
+  Session2: cached
+  Session3: cached
+  Session4: cached
+  Session5: cached
+
+=== seed replication (Session5, balanced 48/class, 5 draws) ===
+  seed 20261008: cached
+  seed 101: cached
+  seed 202: cached
+  seed 303: measuring ...
+  seed 404: measuring ...
+
+  stability:
+    gaussian_snr:7.5   0/5  stable
+    gaussian_snr:4     0/5  stable
+    lowpass:900        2/5  UNSTABLE
+    lowpass:600        5/5  stable
+
+wrote D:\ser-audit\outputs\auxiliary\aux_summary.json

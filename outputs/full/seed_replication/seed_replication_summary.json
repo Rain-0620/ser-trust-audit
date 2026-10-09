@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-10-09T11:33:15",
+  "session": "Session5",
+  "per_class": 48,
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    20261008
+  ],
+  "conditions": [
+    "gaussian_snr:7.5",
+    "gaussian_snr:4",
+    "lowpass:900",
+    "lowpass:600"
+  ],
+  "stability": {
+    "gaussian_snr:7.5": {
+      "collapsed_on": 0,
+      "of_draws": 5,
+      "stable": true
+    },
+    "gaussian_snr:4": {
+      "collapsed_on": 2,
+      "of_draws": 5,
+      "stable": false
+    },
+    "lowpass:900": {
+      "collapsed_on": 2,
+      "of_draws": 5,
+      "stable": false
+    },
+    "lowpass:600": {
+      "collapsed_on": 5,
+      "of_draws": 5,
+      "stable": true
+    }
+  },
+  "note": "Same session, same conditions, same per-class budget. Only the draw of the balanced subset differs, so scatter here is sampling noise in the collapse detector, not a property of the model."
+}

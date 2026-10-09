@@ -1,0 +1,4399 @@
+{
+  "generated_at": "2026-10-09T03:24:18.050272+00:00",
+  "phase_a": {
+    "session": "Session5",
+    "per_class": 0,
+    "n_utterances": 1241,
+    "bootstrap_b": 2000,
+    "n_conditions": 53,
+    "families": [
+      "gaussian_snr",
+      "lowpass",
+      "highpass",
+      "clipping",
+      "mp3",
+      "white_noise",
+      "gain",
+      "pitch",
+      "timestretch"
+    ]
+  },
+  "thresholds": {
+    "gaussian_snr": {
+      "family": "gaussian_snr",
+      "threshold_found": true,
+      "first_degenerate_condition": "gaussian_snr:2.0",
+      "first_degenerate_value": 2.0,
+      "first_degenerate_probability": 1.0,
+      "last_healthy_condition": "gaussian_snr:5.0",
+      "last_healthy_value": 5.0,
+      "bracketing_interval": [
+        5.0,
+        2.0
+      ],
+      "interval_width": 3.0,
+      "collapse_signature": "majority share 0.82 (>= 0.75)",
+      "degenerate_majority_class": "happy",
+      "basis": "bracketed between two adjacent sampled values — an inference, not an observation"
+    },
+    "lowpass": {
+      "family": "lowpass",
+      "threshold_found": true,
+      "first_degenerate_condition": "lowpass:850.0",
+      "first_degenerate_value": 850.0,
+      "first_degenerate_probability": 0.7555,
+      "last_healthy_condition": "lowpass:900.0",
+      "last_healthy_value": 900.0,
+      "bracketing_interval": [
+        900.0,
+        850.0
+      ],
+      "interval_width": 50.0,
+      "collapse_signature": "mean entropy 0.30 (<= 0.30)",
+      "degenerate_majority_class": "neutral",
+      "basis": "bracketed between two adjacent sampled values — an inference, not an observation"
+    },
+    "highpass": {
+      "family": "highpass",
+      "threshold_found": false,
+      "note": "no sampled value collapsed; the tolerance boundary lies outside the sampled range",
+      "worst_sampled": "highpass:800.0"
+    },
+    "clipping": {
+      "family": "clipping",
+      "threshold_found": false,
+      "note": "no sampled value collapsed; the tolerance boundary lies outside the sampled range",
+      "worst_sampled": "clipping:30"
+    },
+    "mp3": {
+      "family": "mp3",
+      "threshold_found": true,
+      "first_degenerate_condition": "mp3:8",
+      "first_degenerate_value": 8,
+      "first_degenerate_probability": 1.0,
+      "last_healthy_condition": "mp3:16",
+      "last_healthy_value": 16,
+      "bracketing_interval": [
+        16,
+        8
+      ],
+      "interval_width": 8,
+      "collapse_signature": "majority share 0.84 (>= 0.75)",
+      "degenerate_majority_class": "neutral",
+      "basis": "bracketed between two adjacent sampled values — an inference, not an observation"
+    },
+    "white_noise": {
+      "family": "white_noise",
+      "threshold_found": true,
+      "first_degenerate_condition": "white_noise:0.02",
+      "first_degenerate_value": 0.02,
+      "first_degenerate_probability": 1.0,
+      "last_healthy_condition": "white_noise:0.005",
+      "last_healthy_value": 0.005,
+      "bracketing_interval": [
+        0.005,
+        0.02
+      ],
+      "interval_width": 0.015,
+      "collapse_signature": "majority share 0.80 (>= 0.75)",
+      "degenerate_majority_class": "happy",
+      "basis": "bracketed between two adjacent sampled values — an inference, not an observation"
+    },
+    "gain": null,
+    "pitch": null,
+    "timestretch": null
+  },
+  "sample_design_control": {
+    "note": "same session, same model, same condition — different test set",
+    "comparisons": [
+      {
+        "condition": "gaussian_snr:7.5",
+        "full_n": 1241,
+        "full_balanced_accuracy": 0.4328,
+        "full_majority_share": 0.5995,
+        "full_degenerate": false,
+        "full_P_degenerate": 0.0,
+        "balanced_n": 192,
+        "balanced_balanced_accuracy": 0.4062,
+        "balanced_majority_share": 0.6042,
+        "balanced_degenerate": false,
+        "balanced_P_degenerate": 0.0,
+        "verdict_flips": false
+      },
+      {
+        "condition": "lowpass:900.0",
+        "full_n": 1241,
+        "full_balanced_accuracy": 0.5355,
+        "full_majority_share": 0.5915,
+        "full_degenerate": false,
+        "full_P_degenerate": 0.0085,
+        "balanced_n": 192,
+        "balanced_balanced_accuracy": 0.5469,
+        "balanced_majority_share": 0.5208,
+        "balanced_degenerate": true,
+        "balanced_P_degenerate": 0.5845,
+        "verdict_flips": true
+      }
+    ],
+    "clean_full": {
+      "balanced_accuracy": 0.7761,
+      "balanced_accuracy_ci95": [
+        0.7522,
+        0.8009
+      ],
+      "per_class_recall": {
+        "angry": 0.7471,
+        "happy": 0.7602,
+        "sad": 0.8367,
+        "neutral": 0.7604
+      }
+    },
+    "clean_balanced": {
+      "balanced_accuracy": 0.8073,
+      "balanced_accuracy_ci95": [
+        0.7521,
+        0.8603
+      ],
+      "per_class_recall": {
+        "angry": 0.7917,
+        "happy": 0.7917,
+        "sad": 0.9167,
+        "neutral": 0.7292
+      }
+    },
+    "conditions_with_flipped_verdict": [
+      "lowpass:900.0"
+    ],
+    "interpretation": "A flipped verdict here means the collapse call depends on the evaluation set, not only on the model: the small balanced subset and the full session disagree."
+  },
+  "multiple_comparison_global": {
+    "method": "holm-bonferroni",
+    "alpha": 0.05,
+    "m_conditions": 53,
+    "n_significant": 48,
+    "note": "per-family Holm is also present inside each fam_*.json (multiple_comparison)"
+  },
+  "conditions": [
+    {
+      "condition": "gaussian_snr:30.0",
+      "family": "gaussian_snr",
+      "value": 30.0,
+      "unit": "dB",
+      "wall_seconds": 85.4,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.7027,
+      "balanced_accuracy": 0.7325,
+      "macro_f1": 0.7011,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.3916,
+      "mean_normalised_entropy": 0.4082,
+      "per_class_recall": {
+        "angry": 0.8882,
+        "happy": 0.7624,
+        "sad": 0.7714,
+        "neutral": 0.5078
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.6769,
+        0.7276
+      ],
+      "balanced_accuracy_ci95": [
+        0.7085,
+        0.7552
+      ],
+      "majority_share_ci95": [
+        0.3642,
+        0.419
+      ],
+      "entropy_ci95": [
+        0.3944,
+        0.422
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0437,
+      "delta_balanced_accuracy_ci95": [
+        -0.0951,
+        -0.0483
+      ],
+      "delta_accuracy": -0.0709,
+      "mcnemar_b_clean_right_cond_wrong": 168,
+      "mcnemar_c_clean_wrong_cond_right": 80,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.1015,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:15.0",
+      "family": "gaussian_snr",
+      "value": 15.0,
+      "unit": "dB",
+      "wall_seconds": 86.1,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6076,
+      "balanced_accuracy": 0.5839,
+      "macro_f1": 0.5972,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.4738,
+      "mean_normalised_entropy": 0.4484,
+      "per_class_recall": {
+        "angry": 0.4471,
+        "happy": 0.733,
+        "sad": 0.6449,
+        "neutral": 0.5104
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.581,
+        0.6342
+      ],
+      "balanced_accuracy_ci95": [
+        0.5544,
+        0.6124
+      ],
+      "majority_share_ci95": [
+        0.4464,
+        0.5004
+      ],
+      "entropy_ci95": [
+        0.4356,
+        0.4607
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.1923,
+      "delta_balanced_accuracy_ci95": [
+        -0.1934,
+        -0.1378
+      ],
+      "delta_accuracy": -0.166,
+      "mcnemar_b_clean_right_cond_wrong": 280,
+      "mcnemar_c_clean_wrong_cond_right": 74,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4165,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:10.0",
+      "family": "gaussian_snr",
+      "value": 10.0,
+      "unit": "dB",
+      "wall_seconds": 85.5,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5431,
+      "balanced_accuracy": 0.4777,
+      "macro_f1": 0.4803,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.5246,
+      "mean_normalised_entropy": 0.4482,
+      "per_class_recall": {
+        "angry": 0.1294,
+        "happy": 0.7104,
+        "sad": 0.5265,
+        "neutral": 0.5443
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5157,
+        0.5713
+      ],
+      "balanced_accuracy_ci95": [
+        0.453,
+        0.5048
+      ],
+      "majority_share_ci95": [
+        0.4964,
+        0.5528
+      ],
+      "entropy_ci95": [
+        0.4358,
+        0.4607
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2985,
+      "delta_balanced_accuracy_ci95": [
+        -0.2627,
+        -0.1966
+      ],
+      "delta_accuracy": -0.2305,
+      "mcnemar_b_clean_right_cond_wrong": 380,
+      "mcnemar_c_clean_wrong_cond_right": 94,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.6297,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:9.0",
+      "family": "gaussian_snr",
+      "value": 9.0,
+      "unit": "dB",
+      "wall_seconds": 85.6,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5302,
+      "balanced_accuracy": 0.4539,
+      "macro_f1": 0.4514,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.5536,
+      "mean_normalised_entropy": 0.4461,
+      "per_class_recall": {
+        "angry": 0.0824,
+        "happy": 0.733,
+        "sad": 0.4612,
+        "neutral": 0.5391
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.502,
+        0.5568
+      ],
+      "balanced_accuracy_ci95": [
+        0.4296,
+        0.4793
+      ],
+      "majority_share_ci95": [
+        0.527,
+        0.5794
+      ],
+      "entropy_ci95": [
+        0.4339,
+        0.458
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.3222,
+      "delta_balanced_accuracy_ci95": [
+        -0.2748,
+        -0.2119
+      ],
+      "delta_accuracy": -0.2434,
+      "mcnemar_b_clean_right_cond_wrong": 397,
+      "mcnemar_c_clean_wrong_cond_right": 95,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.6773,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:8.5",
+      "family": "gaussian_snr",
+      "value": 8.5,
+      "unit": "dB",
+      "wall_seconds": 85.5,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5407,
+      "balanced_accuracy": 0.4641,
+      "macro_f1": 0.4655,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.56,
+      "mean_normalised_entropy": 0.4442,
+      "per_class_recall": {
+        "angry": 0.1,
+        "happy": 0.7534,
+        "sad": 0.4612,
+        "neutral": 0.5417
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5125,
+        0.5689
+      ],
+      "balanced_accuracy_ci95": [
+        0.4396,
+        0.4902
+      ],
+      "majority_share_ci95": [
+        0.5318,
+        0.5882
+      ],
+      "entropy_ci95": [
+        0.4325,
+        0.4559
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.312,
+      "delta_balanced_accuracy_ci95": [
+        -0.2643,
+        -0.1998
+      ],
+      "delta_accuracy": -0.2329,
+      "mcnemar_b_clean_right_cond_wrong": 390,
+      "mcnemar_c_clean_wrong_cond_right": 101,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.6569,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:8.0",
+      "family": "gaussian_snr",
+      "value": 8.0,
+      "unit": "dB",
+      "wall_seconds": 85.6,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.527,
+      "balanced_accuracy": 0.4462,
+      "macro_f1": 0.445,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.5753,
+      "mean_normalised_entropy": 0.4373,
+      "per_class_recall": {
+        "angry": 0.0706,
+        "happy": 0.7376,
+        "sad": 0.4245,
+        "neutral": 0.5521
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4988,
+        0.5544
+      ],
+      "balanced_accuracy_ci95": [
+        0.4214,
+        0.4695
+      ],
+      "majority_share_ci95": [
+        0.5479,
+        0.6035
+      ],
+      "entropy_ci95": [
+        0.4262,
+        0.4483
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.3299,
+      "delta_balanced_accuracy_ci95": [
+        -0.2796,
+        -0.2127
+      ],
+      "delta_accuracy": -0.2466,
+      "mcnemar_b_clean_right_cond_wrong": 405,
+      "mcnemar_c_clean_wrong_cond_right": 99,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.6928,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:7.5",
+      "family": "gaussian_snr",
+      "value": 7.5,
+      "unit": "dB",
+      "wall_seconds": 85.7,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5165,
+      "balanced_accuracy": 0.4328,
+      "macro_f1": 0.4308,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.5995,
+      "mean_normalised_entropy": 0.4342,
+      "per_class_recall": {
+        "angry": 0.0706,
+        "happy": 0.7602,
+        "sad": 0.3796,
+        "neutral": 0.5208
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4883,
+        0.5439
+      ],
+      "balanced_accuracy_ci95": [
+        0.4096,
+        0.4573
+      ],
+      "majority_share_ci95": [
+        0.5729,
+        0.6261
+      ],
+      "entropy_ci95": [
+        0.423,
+        0.4453
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.3433,
+      "delta_balanced_accuracy_ci95": [
+        -0.2901,
+        -0.2256
+      ],
+      "delta_accuracy": -0.2571,
+      "mcnemar_b_clean_right_cond_wrong": 418,
+      "mcnemar_c_clean_wrong_cond_right": 99,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.7198,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:7.0",
+      "family": "gaussian_snr",
+      "value": 7.0,
+      "unit": "dB",
+      "wall_seconds": 85.9,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5068,
+      "balanced_accuracy": 0.4193,
+      "macro_f1": 0.4116,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.6221,
+      "mean_normalised_entropy": 0.4245,
+      "per_class_recall": {
+        "angry": 0.0353,
+        "happy": 0.7715,
+        "sad": 0.3755,
+        "neutral": 0.4948
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4795,
+        0.5342
+      ],
+      "balanced_accuracy_ci95": [
+        0.3968,
+        0.4414
+      ],
+      "majority_share_ci95": [
+        0.5963,
+        0.6487
+      ],
+      "entropy_ci95": [
+        0.4139,
+        0.4359
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.3568,
+      "delta_balanced_accuracy_ci95": [
+        -0.3014,
+        -0.2345
+      ],
+      "delta_accuracy": -0.2667,
+      "mcnemar_b_clean_right_cond_wrong": 433,
+      "mcnemar_c_clean_wrong_cond_right": 102,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.7472,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:6.0",
+      "family": "gaussian_snr",
+      "value": 6.0,
+      "unit": "dB",
+      "wall_seconds": 85.9,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.477,
+      "balanced_accuracy": 0.3895,
+      "macro_f1": 0.3781,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.6535,
+      "mean_normalised_entropy": 0.4126,
+      "per_class_recall": {
+        "angry": 0.0235,
+        "happy": 0.7715,
+        "sad": 0.3306,
+        "neutral": 0.4323
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4488,
+        0.5044
+      ],
+      "balanced_accuracy_ci95": [
+        0.3677,
+        0.4121
+      ],
+      "majority_share_ci95": [
+        0.6285,
+        0.6793
+      ],
+      "entropy_ci95": [
+        0.4015,
+        0.4236
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.3866,
+      "delta_balanced_accuracy_ci95": [
+        -0.3312,
+        -0.2627
+      ],
+      "delta_accuracy": -0.2965,
+      "mcnemar_b_clean_right_cond_wrong": 467,
+      "mcnemar_c_clean_wrong_cond_right": 99,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.8079,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:5.0",
+      "family": "gaussian_snr",
+      "value": 5.0,
+      "unit": "dB",
+      "wall_seconds": 86.1,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4529,
+      "balanced_accuracy": 0.361,
+      "macro_f1": 0.3451,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.6906,
+      "mean_normalised_entropy": 0.3899,
+      "per_class_recall": {
+        "angry": 0.0118,
+        "happy": 0.7783,
+        "sad": 0.2531,
+        "neutral": 0.401
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4255,
+        0.4803
+      ],
+      "balanced_accuracy_ci95": [
+        0.3389,
+        0.3818
+      ],
+      "majority_share_ci95": [
+        0.6656,
+        0.7156
+      ],
+      "entropy_ci95": [
+        0.3789,
+        0.4004
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.415,
+      "delta_balanced_accuracy_ci95": [
+        -0.357,
+        -0.2869
+      ],
+      "delta_accuracy": -0.3207,
+      "mcnemar_b_clean_right_cond_wrong": 502,
+      "mcnemar_c_clean_wrong_cond_right": 104,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.8666,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:2.0",
+      "family": "gaussian_snr",
+      "value": 2.0,
+      "unit": "dB",
+      "wall_seconds": 86.6,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.3836,
+      "balanced_accuracy": 0.2825,
+      "macro_f1": 0.2301,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.8195,
+      "mean_normalised_entropy": 0.3171,
+      "per_class_recall": {
+        "angry": 0.0,
+        "happy": 0.8326,
+        "sad": 0.0449,
+        "neutral": 0.2526
+      },
+      "degenerate": true,
+      "collapse_reason": "majority share 0.82 (>= 0.75)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.3578,
+        0.4118
+      ],
+      "balanced_accuracy_ci95": [
+        0.268,
+        0.2974
+      ],
+      "majority_share_ci95": [
+        0.7977,
+        0.8413
+      ],
+      "entropy_ci95": [
+        0.3064,
+        0.3281
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.4936,
+      "delta_balanced_accuracy_ci95": [
+        -0.4247,
+        -0.3546
+      ],
+      "delta_accuracy": -0.39,
+      "mcnemar_b_clean_right_cond_wrong": 584,
+      "mcnemar_c_clean_wrong_cond_right": 100,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -1.035,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gaussian_snr:0.0",
+      "family": "gaussian_snr",
+      "value": 0.0,
+      "unit": "dB",
+      "wall_seconds": 86.3,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.3537,
+      "balanced_accuracy": 0.2545,
+      "macro_f1": 0.185,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.8654,
+      "mean_normalised_entropy": 0.2643,
+      "per_class_recall": {
+        "angry": 0.0,
+        "happy": 0.8484,
+        "sad": 0.0082,
+        "neutral": 0.1615
+      },
+      "degenerate": true,
+      "collapse_reason": "majority share 0.87 (>= 0.75)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.3272,
+        0.3804
+      ],
+      "balanced_accuracy_ci95": [
+        0.2421,
+        0.2676
+      ],
+      "majority_share_ci95": [
+        0.8461,
+        0.8848
+      ],
+      "entropy_ci95": [
+        0.2544,
+        0.2744
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.5216,
+      "delta_balanced_accuracy_ci95": [
+        -0.4545,
+        -0.3852
+      ],
+      "delta_accuracy": -0.4198,
+      "mcnemar_b_clean_right_cond_wrong": 622,
+      "mcnemar_c_clean_wrong_cond_right": 101,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -1.0982,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "lowpass:8000.0",
+      "family": "lowpass",
+      "value": 8000.0,
+      "unit": "Hz",
+      "wall_seconds": 85.4,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.7736,
+      "balanced_accuracy": 0.7761,
+      "macro_f1": 0.7745,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.3497,
+      "mean_normalised_entropy": 0.3681,
+      "per_class_recall": {
+        "angry": 0.7471,
+        "happy": 0.7602,
+        "sad": 0.8367,
+        "neutral": 0.7604
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.7494,
+        0.7961
+      ],
+      "balanced_accuracy_ci95": [
+        0.7501,
+        0.8016
+      ],
+      "majority_share_ci95": [
+        0.3255,
+        0.3779
+      ],
+      "entropy_ci95": [
+        0.3554,
+        0.3807
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": 0.0,
+      "delta_balanced_accuracy_ci95": [
+        0.0,
+        0.0
+      ],
+      "delta_accuracy": 0.0,
+      "mcnemar_b_clean_right_cond_wrong": 0,
+      "mcnemar_c_clean_wrong_cond_right": 0,
+      "mcnemar_exact_p": 1.0,
+      "cohens_h_vs_clean": 0.0,
+      "holm_global_adjusted_p": 1.0,
+      "holm_global_significant": false
+    },
+    {
+      "condition": "lowpass:2000.0",
+      "family": "lowpass",
+      "value": 2000.0,
+      "unit": "Hz",
+      "wall_seconds": 85.1,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5794,
+      "balanced_accuracy": 0.6246,
+      "macro_f1": 0.563,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.4956,
+      "mean_normalised_entropy": 0.3455,
+      "per_class_recall": {
+        "angry": 0.8,
+        "happy": 0.2262,
+        "sad": 0.5918,
+        "neutral": 0.8802
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5512,
+        0.6068
+      ],
+      "balanced_accuracy_ci95": [
+        0.6002,
+        0.6501
+      ],
+      "majority_share_ci95": [
+        0.4674,
+        0.523
+      ],
+      "entropy_ci95": [
+        0.3324,
+        0.3587
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.1516,
+      "delta_balanced_accuracy_ci95": [
+        -0.224,
+        -0.1644
+      ],
+      "delta_accuracy": -0.1942,
+      "mcnemar_b_clean_right_cond_wrong": 330,
+      "mcnemar_c_clean_wrong_cond_right": 89,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.3332,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "lowpass:1100.0",
+      "family": "lowpass",
+      "value": 1100.0,
+      "unit": "Hz",
+      "wall_seconds": 86.3,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4907,
+      "balanced_accuracy": 0.5477,
+      "macro_f1": 0.4488,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5383,
+      "mean_normalised_entropy": 0.3363,
+      "per_class_recall": {
+        "angry": 0.7824,
+        "happy": 0.0566,
+        "sad": 0.4898,
+        "neutral": 0.862
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4633,
+        0.5181
+      ],
+      "balanced_accuracy_ci95": [
+        0.5242,
+        0.5717
+      ],
+      "majority_share_ci95": [
+        0.5109,
+        0.5649
+      ],
+      "entropy_ci95": [
+        0.3227,
+        0.3496
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2284,
+      "delta_balanced_accuracy_ci95": [
+        -0.3151,
+        -0.249
+      ],
+      "delta_accuracy": -0.2828,
+      "mcnemar_b_clean_right_cond_wrong": 442,
+      "mcnemar_c_clean_wrong_cond_right": 91,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4895,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "lowpass:1000.0",
+      "family": "lowpass",
+      "value": 1000.0,
+      "unit": "Hz",
+      "wall_seconds": 86.6,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4948,
+      "balanced_accuracy": 0.5482,
+      "macro_f1": 0.4574,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5471,
+      "mean_normalised_entropy": 0.3261,
+      "per_class_recall": {
+        "angry": 0.7588,
+        "happy": 0.0724,
+        "sad": 0.502,
+        "neutral": 0.8594
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4674,
+        0.5238
+      ],
+      "balanced_accuracy_ci95": [
+        0.5231,
+        0.5726
+      ],
+      "majority_share_ci95": [
+        0.5189,
+        0.5754
+      ],
+      "entropy_ci95": [
+        0.3126,
+        0.3397
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2279,
+      "delta_balanced_accuracy_ci95": [
+        -0.3143,
+        -0.2458
+      ],
+      "delta_accuracy": -0.2788,
+      "mcnemar_b_clean_right_cond_wrong": 434,
+      "mcnemar_c_clean_wrong_cond_right": 88,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4886,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "lowpass:950.0",
+      "family": "lowpass",
+      "value": 950.0,
+      "unit": "Hz",
+      "wall_seconds": 86.9,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4907,
+      "balanced_accuracy": 0.5442,
+      "macro_f1": 0.449,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5705,
+      "mean_normalised_entropy": 0.3226,
+      "per_class_recall": {
+        "angry": 0.7706,
+        "happy": 0.0566,
+        "sad": 0.4694,
+        "neutral": 0.8802
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4633,
+        0.5181
+      ],
+      "balanced_accuracy_ci95": [
+        0.5203,
+        0.569
+      ],
+      "majority_share_ci95": [
+        0.5415,
+        0.5963
+      ],
+      "entropy_ci95": [
+        0.3088,
+        0.3361
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2319,
+      "delta_balanced_accuracy_ci95": [
+        -0.3175,
+        -0.2514
+      ],
+      "delta_accuracy": -0.2828,
+      "mcnemar_b_clean_right_cond_wrong": 445,
+      "mcnemar_c_clean_wrong_cond_right": 94,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4965,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "lowpass:900.0",
+      "family": "lowpass",
+      "value": 900.0,
+      "unit": "Hz",
+      "wall_seconds": 87.1,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4899,
+      "balanced_accuracy": 0.5355,
+      "macro_f1": 0.4491,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5915,
+      "mean_normalised_entropy": 0.3164,
+      "per_class_recall": {
+        "angry": 0.7294,
+        "happy": 0.0679,
+        "sad": 0.449,
+        "neutral": 0.8958
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4625,
+        0.5189
+      ],
+      "balanced_accuracy_ci95": [
+        0.5107,
+        0.5597
+      ],
+      "majority_share_ci95": [
+        0.5633,
+        0.618
+      ],
+      "entropy_ci95": [
+        0.3029,
+        0.33
+      ],
+      "degenerate_probability": 0.0085,
+      "delta_balanced_accuracy": -0.2406,
+      "delta_balanced_accuracy_ci95": [
+        -0.3175,
+        -0.2498
+      ],
+      "delta_accuracy": -0.2836,
+      "mcnemar_b_clean_right_cond_wrong": 453,
+      "mcnemar_c_clean_wrong_cond_right": 101,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.5139,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "lowpass:850.0",
+      "family": "lowpass",
+      "value": 850.0,
+      "unit": "Hz",
+      "wall_seconds": 87.3,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4803,
+      "balanced_accuracy": 0.5191,
+      "macro_f1": 0.4383,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.6237,
+      "mean_normalised_entropy": 0.2955,
+      "per_class_recall": {
+        "angry": 0.6412,
+        "happy": 0.0475,
+        "sad": 0.4816,
+        "neutral": 0.9062
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.30 (<= 0.30)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4529,
+        0.5085
+      ],
+      "balanced_accuracy_ci95": [
+        0.4942,
+        0.5442
+      ],
+      "majority_share_ci95": [
+        0.5971,
+        0.6495
+      ],
+      "entropy_ci95": [
+        0.282,
+        0.3088
+      ],
+      "degenerate_probability": 0.7555,
+      "delta_balanced_accuracy": -0.257,
+      "delta_balanced_accuracy_ci95": [
+        -0.3288,
+        -0.2586
+      ],
+      "delta_accuracy": -0.2933,
+      "mcnemar_b_clean_right_cond_wrong": 464,
+      "mcnemar_c_clean_wrong_cond_right": 100,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.5467,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "lowpass:800.0",
+      "family": "lowpass",
+      "value": 800.0,
+      "unit": "Hz",
+      "wall_seconds": 87.6,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4617,
+      "balanced_accuracy": 0.4932,
+      "macro_f1": 0.4141,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.6454,
+      "mean_normalised_entropy": 0.2808,
+      "per_class_recall": {
+        "angry": 0.6059,
+        "happy": 0.0407,
+        "sad": 0.4122,
+        "neutral": 0.9141
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.28 (<= 0.30)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4335,
+        0.4899
+      ],
+      "balanced_accuracy_ci95": [
+        0.4679,
+        0.5188
+      ],
+      "majority_share_ci95": [
+        0.6205,
+        0.6712
+      ],
+      "entropy_ci95": [
+        0.2675,
+        0.2943
+      ],
+      "degenerate_probability": 0.9985,
+      "delta_balanced_accuracy": -0.2829,
+      "delta_balanced_accuracy_ci95": [
+        -0.3449,
+        -0.278
+      ],
+      "delta_accuracy": -0.3118,
+      "mcnemar_b_clean_right_cond_wrong": 479,
+      "mcnemar_c_clean_wrong_cond_right": 92,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.5986,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "lowpass:700.0",
+      "family": "lowpass",
+      "value": 700.0,
+      "unit": "Hz",
+      "wall_seconds": 87.8,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4351,
+      "balanced_accuracy": 0.4509,
+      "macro_f1": 0.3795,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.7156,
+      "mean_normalised_entropy": 0.2491,
+      "per_class_recall": {
+        "angry": 0.5176,
+        "happy": 0.0317,
+        "sad": 0.3143,
+        "neutral": 0.9401
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.25 (<= 0.30)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4061,
+        0.4633
+      ],
+      "balanced_accuracy_ci95": [
+        0.4261,
+        0.4752
+      ],
+      "majority_share_ci95": [
+        0.6906,
+        0.7405
+      ],
+      "entropy_ci95": [
+        0.2361,
+        0.2617
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.3252,
+      "delta_balanced_accuracy_ci95": [
+        -0.3715,
+        -0.303
+      ],
+      "delta_accuracy": -0.3384,
+      "mcnemar_b_clean_right_cond_wrong": 519,
+      "mcnemar_c_clean_wrong_cond_right": 99,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.6833,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "highpass:100.0",
+      "family": "highpass",
+      "value": 100.0,
+      "unit": "Hz",
+      "wall_seconds": 87.9,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.7284,
+      "balanced_accuracy": 0.7656,
+      "macro_f1": 0.7291,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.2925,
+      "mean_normalised_entropy": 0.3841,
+      "per_class_recall": {
+        "angry": 0.8765,
+        "happy": 0.6086,
+        "sad": 0.8612,
+        "neutral": 0.7161
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.7051,
+        0.7526
+      ],
+      "balanced_accuracy_ci95": [
+        0.7431,
+        0.7888
+      ],
+      "majority_share_ci95": [
+        0.2716,
+        0.3175
+      ],
+      "entropy_ci95": [
+        0.3702,
+        0.3983
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0105,
+      "delta_balanced_accuracy_ci95": [
+        -0.0653,
+        -0.025
+      ],
+      "delta_accuracy": -0.0451,
+      "mcnemar_b_clean_right_cond_wrong": 106,
+      "mcnemar_c_clean_wrong_cond_right": 50,
+      "mcnemar_exact_p": 9e-06,
+      "cohens_h_vs_clean": -0.025,
+      "holm_global_adjusted_p": 5.4e-05,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "highpass:200.0",
+      "family": "highpass",
+      "value": 200.0,
+      "unit": "Hz",
+      "wall_seconds": 88.1,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.689,
+      "balanced_accuracy": 0.7464,
+      "macro_f1": 0.6889,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.311,
+      "mean_normalised_entropy": 0.3752,
+      "per_class_recall": {
+        "angry": 0.9235,
+        "happy": 0.4661,
+        "sad": 0.8694,
+        "neutral": 0.7266
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.6632,
+        0.7147
+      ],
+      "balanced_accuracy_ci95": [
+        0.7248,
+        0.7682
+      ],
+      "majority_share_ci95": [
+        0.2861,
+        0.336
+      ],
+      "entropy_ci95": [
+        0.3609,
+        0.3893
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0297,
+      "delta_balanced_accuracy_ci95": [
+        -0.1072,
+        -0.0612
+      ],
+      "delta_accuracy": -0.0846,
+      "mcnemar_b_clean_right_cond_wrong": 173,
+      "mcnemar_c_clean_wrong_cond_right": 68,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.0697,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "highpass:400.0",
+      "family": "highpass",
+      "value": 400.0,
+      "unit": "Hz",
+      "wall_seconds": 88.3,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6285,
+      "balanced_accuracy": 0.6865,
+      "macro_f1": 0.6312,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "angry",
+      "majority_share": 0.3513,
+      "mean_normalised_entropy": 0.3912,
+      "per_class_recall": {
+        "angry": 0.9471,
+        "happy": 0.4751,
+        "sad": 0.7143,
+        "neutral": 0.6094
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.6019,
+        0.6559
+      ],
+      "balanced_accuracy_ci95": [
+        0.6629,
+        0.71
+      ],
+      "majority_share_ci95": [
+        0.3247,
+        0.3779
+      ],
+      "entropy_ci95": [
+        0.3771,
+        0.4064
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0896,
+      "delta_balanced_accuracy_ci95": [
+        -0.1724,
+        -0.1176
+      ],
+      "delta_accuracy": -0.145,
+      "mcnemar_b_clean_right_cond_wrong": 246,
+      "mcnemar_c_clean_wrong_cond_right": 66,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.2028,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "highpass:800.0",
+      "family": "highpass",
+      "value": 800.0,
+      "unit": "Hz",
+      "wall_seconds": 88.9,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5181,
+      "balanced_accuracy": 0.5585,
+      "macro_f1": 0.5014,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "angry",
+      "majority_share": 0.3908,
+      "mean_normalised_entropy": 0.4056,
+      "per_class_recall": {
+        "angry": 0.9353,
+        "happy": 0.6357,
+        "sad": 0.3714,
+        "neutral": 0.2917
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4899,
+        0.5463
+      ],
+      "balanced_accuracy_ci95": [
+        0.5346,
+        0.5836
+      ],
+      "majority_share_ci95": [
+        0.3763,
+        0.419
+      ],
+      "entropy_ci95": [
+        0.3916,
+        0.4193
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2176,
+      "delta_balanced_accuracy_ci95": [
+        -0.2885,
+        -0.224
+      ],
+      "delta_accuracy": -0.2554,
+      "mcnemar_b_clean_right_cond_wrong": 396,
+      "mcnemar_c_clean_wrong_cond_right": 79,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4677,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "clipping:1",
+      "family": "clipping",
+      "value": 1,
+      "unit": "percent-clipped",
+      "wall_seconds": 87.2,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 0,
+      "n": 1241,
+      "accuracy": 0.7736,
+      "balanced_accuracy": 0.7761,
+      "macro_f1": 0.7745,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.3497,
+      "mean_normalised_entropy": 0.3681,
+      "per_class_recall": {
+        "angry": 0.7471,
+        "happy": 0.7602,
+        "sad": 0.8367,
+        "neutral": 0.7604
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.751,
+        0.7961
+      ],
+      "balanced_accuracy_ci95": [
+        0.7523,
+        0.8006
+      ],
+      "majority_share_ci95": [
+        0.3263,
+        0.3747
+      ],
+      "entropy_ci95": [
+        0.3551,
+        0.3806
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": 0.0,
+      "delta_balanced_accuracy_ci95": [
+        0.0,
+        0.0
+      ],
+      "delta_accuracy": 0.0,
+      "mcnemar_b_clean_right_cond_wrong": 0,
+      "mcnemar_c_clean_wrong_cond_right": 0,
+      "mcnemar_exact_p": 1.0,
+      "cohens_h_vs_clean": 0.0,
+      "holm_global_adjusted_p": 1.0,
+      "holm_global_significant": false
+    },
+    {
+      "condition": "clipping:5",
+      "family": "clipping",
+      "value": 5,
+      "unit": "percent-clipped",
+      "wall_seconds": 87.7,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.7534,
+      "balanced_accuracy": 0.7611,
+      "macro_f1": 0.7579,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.3215,
+      "mean_normalised_entropy": 0.3665,
+      "per_class_recall": {
+        "angry": 0.7353,
+        "happy": 0.7036,
+        "sad": 0.8449,
+        "neutral": 0.7604
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.7301,
+        0.7768
+      ],
+      "balanced_accuracy_ci95": [
+        0.7371,
+        0.7863
+      ],
+      "majority_share_ci95": [
+        0.3127,
+        0.3513
+      ],
+      "entropy_ci95": [
+        0.3541,
+        0.3791
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0151,
+      "delta_balanced_accuracy_ci95": [
+        -0.0355,
+        -0.0048
+      ],
+      "delta_accuracy": -0.0201,
+      "mcnemar_b_clean_right_cond_wrong": 59,
+      "mcnemar_c_clean_wrong_cond_right": 34,
+      "mcnemar_exact_p": 0.012401,
+      "cohens_h_vs_clean": -0.0357,
+      "holm_global_adjusted_p": 0.062005,
+      "holm_global_significant": false
+    },
+    {
+      "condition": "clipping:10",
+      "family": "clipping",
+      "value": 10,
+      "unit": "percent-clipped",
+      "wall_seconds": 87.8,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.718,
+      "balanced_accuracy": 0.737,
+      "macro_f1": 0.7267,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.3272,
+      "mean_normalised_entropy": 0.3746,
+      "per_class_recall": {
+        "angry": 0.6941,
+        "happy": 0.6063,
+        "sad": 0.9184,
+        "neutral": 0.7292
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.6922,
+        0.7422
+      ],
+      "balanced_accuracy_ci95": [
+        0.7117,
+        0.7608
+      ],
+      "majority_share_ci95": [
+        0.3038,
+        0.3529
+      ],
+      "entropy_ci95": [
+        0.3618,
+        0.3878
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0391,
+      "delta_balanced_accuracy_ci95": [
+        -0.0774,
+        -0.0346
+      ],
+      "delta_accuracy": -0.0556,
+      "mcnemar_b_clean_right_cond_wrong": 128,
+      "mcnemar_c_clean_wrong_cond_right": 59,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.0912,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "clipping:20",
+      "family": "clipping",
+      "value": 20,
+      "unit": "percent-clipped",
+      "wall_seconds": 87.9,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.639,
+      "balanced_accuracy": 0.6602,
+      "macro_f1": 0.6422,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "sad",
+      "majority_share": 0.3529,
+      "mean_normalised_entropy": 0.3947,
+      "per_class_recall": {
+        "angry": 0.5706,
+        "happy": 0.5249,
+        "sad": 0.9306,
+        "neutral": 0.6146
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.6116,
+        0.6656
+      ],
+      "balanced_accuracy_ci95": [
+        0.6337,
+        0.6872
+      ],
+      "majority_share_ci95": [
+        0.3255,
+        0.3796
+      ],
+      "entropy_ci95": [
+        0.3809,
+        0.4078
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.1159,
+      "delta_balanced_accuracy_ci95": [
+        -0.1612,
+        -0.1064
+      ],
+      "delta_accuracy": -0.1346,
+      "mcnemar_b_clean_right_cond_wrong": 243,
+      "mcnemar_c_clean_wrong_cond_right": 76,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.2589,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "clipping:30",
+      "family": "clipping",
+      "value": 30,
+      "unit": "percent-clipped",
+      "wall_seconds": 87.9,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5616,
+      "balanced_accuracy": 0.5845,
+      "macro_f1": 0.5753,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "sad",
+      "majority_share": 0.3803,
+      "mean_normalised_entropy": 0.4184,
+      "per_class_recall": {
+        "angry": 0.5412,
+        "happy": 0.5023,
+        "sad": 0.8204,
+        "neutral": 0.474
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5351,
+        0.5891
+      ],
+      "balanced_accuracy_ci95": [
+        0.5567,
+        0.6131
+      ],
+      "majority_share_ci95": [
+        0.3537,
+        0.4069
+      ],
+      "entropy_ci95": [
+        0.4049,
+        0.432
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.1916,
+      "delta_balanced_accuracy_ci95": [
+        -0.2434,
+        -0.1829
+      ],
+      "delta_accuracy": -0.2119,
+      "mcnemar_b_clean_right_cond_wrong": 341,
+      "mcnemar_c_clean_wrong_cond_right": 78,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4152,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "mp3:64",
+      "family": "mp3",
+      "value": 64,
+      "unit": "kbps",
+      "wall_seconds": 96.3,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.7671,
+      "balanced_accuracy": 0.7647,
+      "macro_f1": 0.7676,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.3626,
+      "mean_normalised_entropy": 0.3687,
+      "per_class_recall": {
+        "angry": 0.7353,
+        "happy": 0.7738,
+        "sad": 0.7918,
+        "neutral": 0.7578
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.7437,
+        0.7905
+      ],
+      "balanced_accuracy_ci95": [
+        0.7399,
+        0.7901
+      ],
+      "majority_share_ci95": [
+        0.3368,
+        0.3892
+      ],
+      "entropy_ci95": [
+        0.3558,
+        0.381
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0114,
+      "delta_balanced_accuracy_ci95": [
+        -0.0169,
+        0.004
+      ],
+      "delta_accuracy": -0.0064,
+      "mcnemar_b_clean_right_cond_wrong": 27,
+      "mcnemar_c_clean_wrong_cond_right": 19,
+      "mcnemar_exact_p": 0.301996,
+      "cohens_h_vs_clean": -0.0272,
+      "holm_global_adjusted_p": 0.905988,
+      "holm_global_significant": false
+    },
+    {
+      "condition": "mp3:32",
+      "family": "mp3",
+      "value": 32,
+      "unit": "kbps",
+      "wall_seconds": 96.2,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.7623,
+      "balanced_accuracy": 0.7623,
+      "macro_f1": 0.7637,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.3368,
+      "mean_normalised_entropy": 0.3758,
+      "per_class_recall": {
+        "angry": 0.7294,
+        "happy": 0.7308,
+        "sad": 0.8,
+        "neutral": 0.7891
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.7389,
+        0.7865
+      ],
+      "balanced_accuracy_ci95": [
+        0.7376,
+        0.7878
+      ],
+      "majority_share_ci95": [
+        0.3288,
+        0.3666
+      ],
+      "entropy_ci95": [
+        0.3632,
+        0.3881
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0138,
+      "delta_balanced_accuracy_ci95": [
+        -0.025,
+        0.0024
+      ],
+      "delta_accuracy": -0.0113,
+      "mcnemar_b_clean_right_cond_wrong": 45,
+      "mcnemar_c_clean_wrong_cond_right": 31,
+      "mcnemar_exact_p": 0.135385,
+      "cohens_h_vs_clean": -0.0327,
+      "holm_global_adjusted_p": 0.54154,
+      "holm_global_significant": false
+    },
+    {
+      "condition": "mp3:16",
+      "family": "mp3",
+      "value": 16,
+      "unit": "kbps",
+      "wall_seconds": 94.0,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5552,
+      "balanced_accuracy": 0.5734,
+      "macro_f1": 0.5472,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.6688,
+      "mean_normalised_entropy": 0.3109,
+      "per_class_recall": {
+        "angry": 0.6882,
+        "happy": 0.2217,
+        "sad": 0.4122,
+        "neutral": 0.9714
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.527,
+        0.5834
+      ],
+      "balanced_accuracy_ci95": [
+        0.5477,
+        0.5984
+      ],
+      "majority_share_ci95": [
+        0.643,
+        0.6938
+      ],
+      "entropy_ci95": [
+        0.2969,
+        0.3253
+      ],
+      "degenerate_probability": 0.059,
+      "delta_balanced_accuracy": -0.2027,
+      "delta_balanced_accuracy_ci95": [
+        -0.2506,
+        -0.1878
+      ],
+      "delta_accuracy": -0.2184,
+      "mcnemar_b_clean_right_cond_wrong": 365,
+      "mcnemar_c_clean_wrong_cond_right": 94,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4377,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "mp3:8",
+      "family": "mp3",
+      "value": 8,
+      "unit": "kbps",
+      "wall_seconds": 95.0,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4198,
+      "balanced_accuracy": 0.4094,
+      "macro_f1": 0.3664,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.8372,
+      "mean_normalised_entropy": 0.2302,
+      "per_class_recall": {
+        "angry": 0.3294,
+        "happy": 0.0407,
+        "sad": 0.2857,
+        "neutral": 0.9818
+      },
+      "degenerate": true,
+      "collapse_reason": "majority share 0.84 (>= 0.75)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.3932,
+        0.4472
+      ],
+      "balanced_accuracy_ci95": [
+        0.3863,
+        0.4319
+      ],
+      "majority_share_ci95": [
+        0.8171,
+        0.8582
+      ],
+      "entropy_ci95": [
+        0.2179,
+        0.2424
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.3667,
+      "delta_balanced_accuracy_ci95": [
+        -0.386,
+        -0.3199
+      ],
+      "delta_accuracy": -0.3537,
+      "mcnemar_b_clean_right_cond_wrong": 539,
+      "mcnemar_c_clean_wrong_cond_right": 100,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.7672,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "white_noise:0.005",
+      "family": "white_noise",
+      "value": 0.005,
+      "unit": "amplitude",
+      "wall_seconds": 88.7,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5028,
+      "balanced_accuracy": 0.4749,
+      "macro_f1": 0.4843,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.6575,
+      "mean_normalised_entropy": 0.3875,
+      "per_class_recall": {
+        "angry": 0.5941,
+        "happy": 0.776,
+        "sad": 0.1673,
+        "neutral": 0.362
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4746,
+        0.5286
+      ],
+      "balanced_accuracy_ci95": [
+        0.4474,
+        0.5008
+      ],
+      "majority_share_ci95": [
+        0.6309,
+        0.6825
+      ],
+      "entropy_ci95": [
+        0.3749,
+        0.4011
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.3013,
+      "delta_balanced_accuracy_ci95": [
+        -0.3038,
+        -0.2377
+      ],
+      "delta_accuracy": -0.2707,
+      "mcnemar_b_clean_right_cond_wrong": 430,
+      "mcnemar_c_clean_wrong_cond_right": 94,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.6353,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "white_noise:0.02",
+      "family": "white_noise",
+      "value": 0.02,
+      "unit": "amplitude",
+      "wall_seconds": 88.8,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.361,
+      "balanced_accuracy": 0.2856,
+      "macro_f1": 0.2429,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.8002,
+      "mean_normalised_entropy": 0.2633,
+      "per_class_recall": {
+        "angry": 0.1706,
+        "happy": 0.81,
+        "sad": 0.0082,
+        "neutral": 0.1536
+      },
+      "degenerate": true,
+      "collapse_reason": "majority share 0.80 (>= 0.75)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.3336,
+        0.3876
+      ],
+      "balanced_accuracy_ci95": [
+        0.2671,
+        0.3048
+      ],
+      "majority_share_ci95": [
+        0.7784,
+        0.8227
+      ],
+      "entropy_ci95": [
+        0.2518,
+        0.275
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.4905,
+      "delta_balanced_accuracy_ci95": [
+        -0.4488,
+        -0.3787
+      ],
+      "delta_accuracy": -0.4126,
+      "mcnemar_b_clean_right_cond_wrong": 610,
+      "mcnemar_c_clean_wrong_cond_right": 98,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -1.0282,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "white_noise:0.05",
+      "family": "white_noise",
+      "value": 0.05,
+      "unit": "amplitude",
+      "wall_seconds": 88.8,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.3175,
+      "balanced_accuracy": 0.237,
+      "macro_f1": 0.1996,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.6503,
+      "mean_normalised_entropy": 0.2226,
+      "per_class_recall": {
+        "angry": 0.0471,
+        "happy": 0.69,
+        "sad": 0.0,
+        "neutral": 0.2109
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.22 (<= 0.30)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.2917,
+        0.3441
+      ],
+      "balanced_accuracy_ci95": [
+        0.2204,
+        0.2548
+      ],
+      "majority_share_ci95": [
+        0.6253,
+        0.6753
+      ],
+      "entropy_ci95": [
+        0.2128,
+        0.2326
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.5391,
+      "delta_balanced_accuracy_ci95": [
+        -0.4908,
+        -0.419
+      ],
+      "delta_accuracy": -0.4561,
+      "mcnemar_b_clean_right_cond_wrong": 663,
+      "mcnemar_c_clean_wrong_cond_right": 97,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -1.1389,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "white_noise:0.1",
+      "family": "white_noise",
+      "value": 0.1,
+      "unit": "amplitude",
+      "wall_seconds": 88.7,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.2707,
+      "balanced_accuracy": 0.2178,
+      "macro_f1": 0.1954,
+      "chance_level": 0.25,
+      "distinct_predictions": 3,
+      "majority_class": "happy",
+      "majority_share": 0.5262,
+      "mean_normalised_entropy": 0.2157,
+      "per_class_recall": {
+        "angry": 0.1294,
+        "happy": 0.5023,
+        "sad": 0.0,
+        "neutral": 0.2396
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.22 (<= 0.30)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.2466,
+        0.2965
+      ],
+      "balanced_accuracy_ci95": [
+        0.1978,
+        0.2382
+      ],
+      "majority_share_ci95": [
+        0.4996,
+        0.552
+      ],
+      "entropy_ci95": [
+        0.2062,
+        0.2251
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.5583,
+      "delta_balanced_accuracy_ci95": [
+        -0.5367,
+        -0.4658
+      ],
+      "delta_accuracy": -0.5028,
+      "mcnemar_b_clean_right_cond_wrong": 711,
+      "mcnemar_c_clean_wrong_cond_right": 87,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -1.1846,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gain:20.0",
+      "family": "gain",
+      "value": 20.0,
+      "unit": "dB",
+      "wall_seconds": 87.1,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6809,
+      "balanced_accuracy": 0.6888,
+      "macro_f1": 0.6786,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.3989,
+      "mean_normalised_entropy": 0.4024,
+      "per_class_recall": {
+        "angry": 0.8294,
+        "happy": 0.7489,
+        "sad": 0.5673,
+        "neutral": 0.6094
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.6535,
+        0.7051
+      ],
+      "balanced_accuracy_ci95": [
+        0.6608,
+        0.7134
+      ],
+      "majority_share_ci95": [
+        0.3715,
+        0.4255
+      ],
+      "entropy_ci95": [
+        0.3891,
+        0.4158
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0874,
+      "delta_balanced_accuracy_ci95": [
+        -0.1176,
+        -0.0685
+      ],
+      "delta_accuracy": -0.0927,
+      "mcnemar_b_clean_right_cond_wrong": 189,
+      "mcnemar_c_clean_wrong_cond_right": 74,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.1979,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gain:-10.0",
+      "family": "gain",
+      "value": -10.0,
+      "unit": "dB",
+      "wall_seconds": 82.8,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6898,
+      "balanced_accuracy": 0.6721,
+      "macro_f1": 0.6881,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.4585,
+      "mean_normalised_entropy": 0.413,
+      "per_class_recall": {
+        "angry": 0.7235,
+        "happy": 0.8032,
+        "sad": 0.4898,
+        "neutral": 0.6719
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.664,
+        0.7164
+      ],
+      "balanced_accuracy_ci95": [
+        0.6429,
+        0.7015
+      ],
+      "majority_share_ci95": [
+        0.4303,
+        0.4867
+      ],
+      "entropy_ci95": [
+        0.4003,
+        0.4251
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.104,
+      "delta_balanced_accuracy_ci95": [
+        -0.1064,
+        -0.0588
+      ],
+      "delta_accuracy": -0.0838,
+      "mcnemar_b_clean_right_cond_wrong": 175,
+      "mcnemar_c_clean_wrong_cond_right": 71,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.2336,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gain:-20.0",
+      "family": "gain",
+      "value": -20.0,
+      "unit": "dB",
+      "wall_seconds": 78.6,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6237,
+      "balanced_accuracy": 0.6006,
+      "macro_f1": 0.5922,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.4021,
+      "mean_normalised_entropy": 0.413,
+      "per_class_recall": {
+        "angry": 0.7294,
+        "happy": 0.6991,
+        "sad": 0.2367,
+        "neutral": 0.737
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5963,
+        0.6495
+      ],
+      "balanced_accuracy_ci95": [
+        0.5731,
+        0.6252
+      ],
+      "majority_share_ci95": [
+        0.3884,
+        0.4303
+      ],
+      "entropy_ci95": [
+        0.3997,
+        0.4261
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.1755,
+      "delta_balanced_accuracy_ci95": [
+        -0.1781,
+        -0.1201
+      ],
+      "delta_accuracy": -0.1499,
+      "mcnemar_b_clean_right_cond_wrong": 282,
+      "mcnemar_c_clean_wrong_cond_right": 96,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.3825,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "gain:-30.0",
+      "family": "gain",
+      "value": -30.0,
+      "unit": "dB",
+      "wall_seconds": 78.5,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5085,
+      "balanced_accuracy": 0.5246,
+      "macro_f1": 0.4877,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.4021,
+      "mean_normalised_entropy": 0.4466,
+      "per_class_recall": {
+        "angry": 0.7706,
+        "happy": 0.4457,
+        "sad": 0.2571,
+        "neutral": 0.625
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.481,
+        0.5351
+      ],
+      "balanced_accuracy_ci95": [
+        0.4978,
+        0.5512
+      ],
+      "majority_share_ci95": [
+        0.3747,
+        0.4295
+      ],
+      "entropy_ci95": [
+        0.4335,
+        0.4614
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2515,
+      "delta_balanced_accuracy_ci95": [
+        -0.2973,
+        -0.2337
+      ],
+      "delta_accuracy": -0.2651,
+      "mcnemar_b_clean_right_cond_wrong": 421,
+      "mcnemar_c_clean_wrong_cond_right": 92,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.5358,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "pitch:6.0",
+      "family": "pitch",
+      "value": 6.0,
+      "unit": "semitones",
+      "wall_seconds": 102.7,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5077,
+      "balanced_accuracy": 0.5761,
+      "macro_f1": 0.5146,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "angry",
+      "majority_share": 0.3787,
+      "mean_normalised_entropy": 0.3974,
+      "per_class_recall": {
+        "angry": 0.8941,
+        "happy": 0.3824,
+        "sad": 0.6163,
+        "neutral": 0.4115
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4795,
+        0.5351
+      ],
+      "balanced_accuracy_ci95": [
+        0.5508,
+        0.6013
+      ],
+      "majority_share_ci95": [
+        0.3513,
+        0.4069
+      ],
+      "entropy_ci95": [
+        0.382,
+        0.413
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2,
+      "delta_balanced_accuracy_ci95": [
+        -0.2957,
+        -0.2353
+      ],
+      "delta_accuracy": -0.2659,
+      "mcnemar_b_clean_right_cond_wrong": 410,
+      "mcnemar_c_clean_wrong_cond_right": 80,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4323,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "pitch:4.0",
+      "family": "pitch",
+      "value": 4.0,
+      "unit": "semitones",
+      "wall_seconds": 102.6,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5552,
+      "balanced_accuracy": 0.6288,
+      "macro_f1": 0.5637,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "angry",
+      "majority_share": 0.3868,
+      "mean_normalised_entropy": 0.397,
+      "per_class_recall": {
+        "angry": 0.9471,
+        "happy": 0.3733,
+        "sad": 0.6898,
+        "neutral": 0.5052
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5286,
+        0.5818
+      ],
+      "balanced_accuracy_ci95": [
+        0.6057,
+        0.6511
+      ],
+      "majority_share_ci95": [
+        0.3618,
+        0.415
+      ],
+      "entropy_ci95": [
+        0.3828,
+        0.4119
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.1472,
+      "delta_balanced_accuracy_ci95": [
+        -0.249,
+        -0.1869
+      ],
+      "delta_accuracy": -0.2184,
+      "mcnemar_b_clean_right_cond_wrong": 353,
+      "mcnemar_c_clean_wrong_cond_right": 82,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.3244,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "pitch:2.0",
+      "family": "pitch",
+      "value": 2.0,
+      "unit": "semitones",
+      "wall_seconds": 102.4,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6825,
+      "balanced_accuracy": 0.7334,
+      "macro_f1": 0.685,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.2691,
+      "mean_normalised_entropy": 0.4066,
+      "per_class_recall": {
+        "angry": 0.9176,
+        "happy": 0.5339,
+        "sad": 0.8204,
+        "neutral": 0.6615
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.6575,
+        0.7075
+      ],
+      "balanced_accuracy_ci95": [
+        0.7102,
+        0.7557
+      ],
+      "majority_share_ci95": [
+        0.2579,
+        0.2933
+      ],
+      "entropy_ci95": [
+        0.393,
+        0.4201
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0428,
+      "delta_balanced_accuracy_ci95": [
+        -0.116,
+        -0.0637
+      ],
+      "delta_accuracy": -0.0911,
+      "mcnemar_b_clean_right_cond_wrong": 191,
+      "mcnemar_c_clean_wrong_cond_right": 78,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.0994,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "pitch:-2.0",
+      "family": "pitch",
+      "value": -2.0,
+      "unit": "semitones",
+      "wall_seconds": 102.2,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6664,
+      "balanced_accuracy": 0.6997,
+      "macro_f1": 0.6757,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.361,
+      "mean_normalised_entropy": 0.3901,
+      "per_class_recall": {
+        "angry": 0.7,
+        "happy": 0.4638,
+        "sad": 0.898,
+        "neutral": 0.737
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.639,
+        0.693
+      ],
+      "balanced_accuracy_ci95": [
+        0.6743,
+        0.724
+      ],
+      "majority_share_ci95": [
+        0.34,
+        0.3884
+      ],
+      "entropy_ci95": [
+        0.376,
+        0.4035
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0764,
+      "delta_balanced_accuracy_ci95": [
+        -0.1338,
+        -0.083
+      ],
+      "delta_accuracy": -0.1072,
+      "mcnemar_b_clean_right_cond_wrong": 206,
+      "mcnemar_c_clean_wrong_cond_right": 73,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.1741,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "pitch:-4.0",
+      "family": "pitch",
+      "value": -4.0,
+      "unit": "semitones",
+      "wall_seconds": 101.9,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.5286,
+      "balanced_accuracy": 0.5738,
+      "macro_f1": 0.5275,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.4118,
+      "mean_normalised_entropy": 0.409,
+      "per_class_recall": {
+        "angry": 0.5941,
+        "happy": 0.2036,
+        "sad": 0.7918,
+        "neutral": 0.7057
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5012,
+        0.5568
+      ],
+      "balanced_accuracy_ci95": [
+        0.5474,
+        0.6008
+      ],
+      "majority_share_ci95": [
+        0.3892,
+        0.4392
+      ],
+      "entropy_ci95": [
+        0.3947,
+        0.4233
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2023,
+      "delta_balanced_accuracy_ci95": [
+        -0.2748,
+        -0.2135
+      ],
+      "delta_accuracy": -0.245,
+      "mcnemar_b_clean_right_cond_wrong": 379,
+      "mcnemar_c_clean_wrong_cond_right": 75,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.4369,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "pitch:-6.0",
+      "family": "pitch",
+      "value": -6.0,
+      "unit": "semitones",
+      "wall_seconds": 108.3,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4585,
+      "balanced_accuracy": 0.4871,
+      "macro_f1": 0.4454,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.4706,
+      "mean_normalised_entropy": 0.4351,
+      "per_class_recall": {
+        "angry": 0.4588,
+        "happy": 0.1403,
+        "sad": 0.6408,
+        "neutral": 0.7083
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4295,
+        0.4859
+      ],
+      "balanced_accuracy_ci95": [
+        0.4574,
+        0.5152
+      ],
+      "majority_share_ci95": [
+        0.4448,
+        0.4988
+      ],
+      "entropy_ci95": [
+        0.4204,
+        0.4495
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.2891,
+      "delta_balanced_accuracy_ci95": [
+        -0.3473,
+        -0.2828
+      ],
+      "delta_accuracy": -0.3151,
+      "mcnemar_b_clean_right_cond_wrong": 476,
+      "mcnemar_c_clean_wrong_cond_right": 85,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.6109,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "timestretch:0.7",
+      "family": "timestretch",
+      "value": 0.7,
+      "unit": "rate",
+      "wall_seconds": 120.2,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6172,
+      "balanced_accuracy": 0.6367,
+      "macro_f1": 0.6196,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "sad",
+      "majority_share": 0.3747,
+      "mean_normalised_entropy": 0.3973,
+      "per_class_recall": {
+        "angry": 0.5529,
+        "happy": 0.5271,
+        "sad": 0.8939,
+        "neutral": 0.5729
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5898,
+        0.6446
+      ],
+      "balanced_accuracy_ci95": [
+        0.61,
+        0.666
+      ],
+      "majority_share_ci95": [
+        0.3481,
+        0.4021
+      ],
+      "entropy_ci95": [
+        0.3828,
+        0.4109
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.1394,
+      "delta_balanced_accuracy_ci95": [
+        -0.1845,
+        -0.1289
+      ],
+      "delta_accuracy": -0.1563,
+      "mcnemar_b_clean_right_cond_wrong": 262,
+      "mcnemar_c_clean_wrong_cond_right": 68,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.3081,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "timestretch:0.85",
+      "family": "timestretch",
+      "value": 0.85,
+      "unit": "rate",
+      "wall_seconds": 113.8,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.7099,
+      "balanced_accuracy": 0.7332,
+      "macro_f1": 0.7137,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.3263,
+      "mean_normalised_entropy": 0.3815,
+      "per_class_recall": {
+        "angry": 0.7412,
+        "happy": 0.5814,
+        "sad": 0.8653,
+        "neutral": 0.7448
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.6841,
+        0.7349
+      ],
+      "balanced_accuracy_ci95": [
+        0.7067,
+        0.7592
+      ],
+      "majority_share_ci95": [
+        0.3022,
+        0.3521
+      ],
+      "entropy_ci95": [
+        0.3681,
+        0.3952
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.0429,
+      "delta_balanced_accuracy_ci95": [
+        -0.0854,
+        -0.0419
+      ],
+      "delta_accuracy": -0.0637,
+      "mcnemar_b_clean_right_cond_wrong": 146,
+      "mcnemar_c_clean_wrong_cond_right": 67,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.0998,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "timestretch:1.15",
+      "family": "timestretch",
+      "value": 1.15,
+      "unit": "rate",
+      "wall_seconds": 106.2,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.6221,
+      "balanced_accuracy": 0.6436,
+      "macro_f1": 0.6145,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5109,
+      "mean_normalised_entropy": 0.3852,
+      "per_class_recall": {
+        "angry": 0.8294,
+        "happy": 0.4027,
+        "sad": 0.449,
+        "neutral": 0.8932
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5947,
+        0.6479
+      ],
+      "balanced_accuracy_ci95": [
+        0.6186,
+        0.6683
+      ],
+      "majority_share_ci95": [
+        0.4835,
+        0.5391
+      ],
+      "entropy_ci95": [
+        0.3716,
+        0.3991
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.1325,
+      "delta_balanced_accuracy_ci95": [
+        -0.1789,
+        -0.1249
+      ],
+      "delta_accuracy": -0.1515,
+      "mcnemar_b_clean_right_cond_wrong": 269,
+      "mcnemar_c_clean_wrong_cond_right": 81,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.2938,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "timestretch:1.3",
+      "family": "timestretch",
+      "value": 1.3,
+      "unit": "rate",
+      "wall_seconds": 103.5,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4803,
+      "balanced_accuracy": 0.494,
+      "macro_f1": 0.4112,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.7027,
+      "mean_normalised_entropy": 0.3232,
+      "per_class_recall": {
+        "angry": 0.7706,
+        "happy": 0.1923,
+        "sad": 0.0653,
+        "neutral": 0.9479
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.4529,
+        0.5093
+      ],
+      "balanced_accuracy_ci95": [
+        0.4732,
+        0.5139
+      ],
+      "majority_share_ci95": [
+        0.6785,
+        0.7293
+      ],
+      "entropy_ci95": [
+        0.3086,
+        0.3371
+      ],
+      "degenerate_probability": 0.0005,
+      "delta_balanced_accuracy": -0.2821,
+      "delta_balanced_accuracy_ci95": [
+        -0.3263,
+        -0.2603
+      ],
+      "delta_accuracy": -0.2933,
+      "mcnemar_b_clean_right_cond_wrong": 457,
+      "mcnemar_c_clean_wrong_cond_right": 93,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.597,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    },
+    {
+      "condition": "timestretch:1.5",
+      "family": "timestretch",
+      "value": 1.5,
+      "unit": "rate",
+      "wall_seconds": 93.1,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 1241,
+      "n": 1241,
+      "accuracy": 0.4118,
+      "balanced_accuracy": 0.4149,
+      "macro_f1": 0.3145,
+      "chance_level": 0.25,
+      "distinct_predictions": 3,
+      "majority_class": "neutral",
+      "majority_share": 0.8122,
+      "mean_normalised_entropy": 0.2552,
+      "per_class_recall": {
+        "angry": 0.6118,
+        "happy": 0.0792,
+        "sad": 0.0,
+        "neutral": 0.9688
+      },
+      "degenerate": true,
+      "collapse_reason": "majority share 0.81 (>= 0.75)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.3852,
+        0.4384
+      ],
+      "balanced_accuracy_ci95": [
+        0.3948,
+        0.4341
+      ],
+      "majority_share_ci95": [
+        0.7889,
+        0.834
+      ],
+      "entropy_ci95": [
+        0.2428,
+        0.2676
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.3611,
+      "delta_balanced_accuracy_ci95": [
+        -0.3973,
+        -0.3263
+      ],
+      "delta_accuracy": -0.3618,
+      "mcnemar_b_clean_right_cond_wrong": 542,
+      "mcnemar_c_clean_wrong_cond_right": 93,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.7559,
+      "holm_global_adjusted_p": 0.0,
+      "holm_global_significant": true
+    }
+  ],
+  "cross_session": {
+    "Session1": {
+      "n_utterances": 192,
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "family": "gaussian_snr",
+          "value": 7.5,
+          "unit": "dB",
+          "wall_seconds": 14.3,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.2969,
+          "balanced_accuracy": 0.2969,
+          "macro_f1": 0.2344,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "happy",
+          "majority_share": 0.6875,
+          "mean_normalised_entropy": 0.4475,
+          "per_class_recall": {
+            "angry": 0.0208,
+            "happy": 0.7292,
+            "sad": 0.1042,
+            "neutral": 0.3333
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.2344,
+            0.3594
+          ],
+          "balanced_accuracy_ci95": [
+            0.2476,
+            0.3486
+          ],
+          "majority_share_ci95": [
+            0.6198,
+            0.75
+          ],
+          "entropy_ci95": [
+            0.4181,
+            0.4747
+          ],
+          "degenerate_probability": 0.03,
+          "delta_balanced_accuracy": -0.3385,
+          "delta_balanced_accuracy_ci95": [
+            -0.4271,
+            -0.2396
+          ],
+          "delta_accuracy": -0.3385,
+          "mcnemar_b_clean_right_cond_wrong": 82,
+          "mcnemar_c_clean_wrong_cond_right": 17,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.6926
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "family": "gaussian_snr",
+          "value": 4.0,
+          "unit": "dB",
+          "wall_seconds": 14.3,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.25,
+          "macro_f1": 0.1543,
+          "chance_level": 0.25,
+          "distinct_predictions": 3,
+          "majority_class": "happy",
+          "majority_share": 0.8281,
+          "mean_normalised_entropy": 0.3545,
+          "per_class_recall": {
+            "angry": 0.0,
+            "happy": 0.7917,
+            "sad": 0.0,
+            "neutral": 0.2083
+          },
+          "degenerate": true,
+          "collapse_reason": "majority share 0.83 (>= 0.75)",
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.1875,
+            0.3125
+          ],
+          "balanced_accuracy_ci95": [
+            0.2066,
+            0.291
+          ],
+          "majority_share_ci95": [
+            0.776,
+            0.8802
+          ],
+          "entropy_ci95": [
+            0.3288,
+            0.3819
+          ],
+          "degenerate_probability": 0.9965,
+          "delta_balanced_accuracy": -0.3854,
+          "delta_balanced_accuracy_ci95": [
+            -0.4792,
+            -0.2917
+          ],
+          "delta_accuracy": -0.3854,
+          "mcnemar_b_clean_right_cond_wrong": 92,
+          "mcnemar_c_clean_wrong_cond_right": 18,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.7978
+        },
+        {
+          "condition": "lowpass:900.0",
+          "family": "lowpass",
+          "value": 900.0,
+          "unit": "Hz",
+          "wall_seconds": 14.3,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4635,
+          "balanced_accuracy": 0.4635,
+          "macro_f1": 0.421,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "angry",
+          "majority_share": 0.3906,
+          "mean_normalised_entropy": 0.3472,
+          "per_class_recall": {
+            "angry": 0.7917,
+            "happy": 0.0833,
+            "sad": 0.4792,
+            "neutral": 0.5
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3958,
+            0.5365
+          ],
+          "balanced_accuracy_ci95": [
+            0.3978,
+            0.5231
+          ],
+          "majority_share_ci95": [
+            0.3333,
+            0.4635
+          ],
+          "entropy_ci95": [
+            0.3085,
+            0.3823
+          ],
+          "degenerate_probability": 0.0105,
+          "delta_balanced_accuracy": -0.1718,
+          "delta_balanced_accuracy_ci95": [
+            -0.2656,
+            -0.0833
+          ],
+          "delta_accuracy": -0.1719,
+          "mcnemar_b_clean_right_cond_wrong": 59,
+          "mcnemar_c_clean_wrong_cond_right": 26,
+          "mcnemar_exact_p": 0.000447,
+          "cohens_h_vs_clean": -0.3472
+        },
+        {
+          "condition": "lowpass:600.0",
+          "family": "lowpass",
+          "value": 600.0,
+          "unit": "Hz",
+          "wall_seconds": 14.3,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4479,
+          "balanced_accuracy": 0.4479,
+          "macro_f1": 0.3987,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.5104,
+          "mean_normalised_entropy": 0.2968,
+          "per_class_recall": {
+            "angry": 0.6458,
+            "happy": 0.0417,
+            "sad": 0.3125,
+            "neutral": 0.7917
+          },
+          "degenerate": true,
+          "collapse_reason": "mean entropy 0.30 (<= 0.30)",
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3802,
+            0.5208
+          ],
+          "balanced_accuracy_ci95": [
+            0.3896,
+            0.5076
+          ],
+          "majority_share_ci95": [
+            0.4427,
+            0.5833
+          ],
+          "entropy_ci95": [
+            0.2628,
+            0.3328
+          ],
+          "degenerate_probability": 0.571,
+          "delta_balanced_accuracy": -0.1875,
+          "delta_balanced_accuracy_ci95": [
+            -0.2865,
+            -0.0885
+          ],
+          "delta_accuracy": -0.1875,
+          "mcnemar_b_clean_right_cond_wrong": 69,
+          "mcnemar_c_clean_wrong_cond_right": 33,
+          "mcnemar_exact_p": 0.000469,
+          "cohens_h_vs_clean": -0.3786
+        }
+      ]
+    },
+    "Session2": {
+      "n_utterances": 192,
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "family": "gaussian_snr",
+          "value": 7.5,
+          "unit": "dB",
+          "wall_seconds": 12.6,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.5312,
+          "balanced_accuracy": 0.5312,
+          "macro_f1": 0.5121,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "happy",
+          "majority_share": 0.4531,
+          "mean_normalised_entropy": 0.4787,
+          "per_class_recall": {
+            "angry": 0.2292,
+            "happy": 0.75,
+            "sad": 0.4167,
+            "neutral": 0.7292
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.4583,
+            0.599
+          ],
+          "balanced_accuracy_ci95": [
+            0.4673,
+            0.5952
+          ],
+          "majority_share_ci95": [
+            0.3958,
+            0.526
+          ],
+          "entropy_ci95": [
+            0.4498,
+            0.5079
+          ],
+          "degenerate_probability": 0.0,
+          "delta_balanced_accuracy": -0.2604,
+          "delta_balanced_accuracy_ci95": [
+            -0.349,
+            -0.1719
+          ],
+          "delta_accuracy": -0.2604,
+          "mcnemar_b_clean_right_cond_wrong": 66,
+          "mcnemar_c_clean_wrong_cond_right": 16,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.5603
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "family": "gaussian_snr",
+          "value": 4.0,
+          "unit": "dB",
+          "wall_seconds": 12.6,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.3958,
+          "balanced_accuracy": 0.3958,
+          "macro_f1": 0.3366,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "happy",
+          "majority_share": 0.5938,
+          "mean_normalised_entropy": 0.4463,
+          "per_class_recall": {
+            "angry": 0.0833,
+            "happy": 0.7917,
+            "sad": 0.1458,
+            "neutral": 0.5625
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3281,
+            0.4688
+          ],
+          "balanced_accuracy_ci95": [
+            0.34,
+            0.4517
+          ],
+          "majority_share_ci95": [
+            0.5208,
+            0.6615
+          ],
+          "entropy_ci95": [
+            0.4202,
+            0.4745
+          ],
+          "degenerate_probability": 0.0,
+          "delta_balanced_accuracy": -0.3959,
+          "delta_balanced_accuracy_ci95": [
+            -0.4845,
+            -0.3021
+          ],
+          "delta_accuracy": -0.3958,
+          "mcnemar_b_clean_right_cond_wrong": 92,
+          "mcnemar_c_clean_wrong_cond_right": 16,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.8327
+        },
+        {
+          "condition": "lowpass:900.0",
+          "family": "lowpass",
+          "value": 900.0,
+          "unit": "Hz",
+          "wall_seconds": 12.6,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.5052,
+          "balanced_accuracy": 0.5052,
+          "macro_f1": 0.4407,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.5469,
+          "mean_normalised_entropy": 0.2997,
+          "per_class_recall": {
+            "angry": 0.6875,
+            "happy": 0.0208,
+            "sad": 0.3958,
+            "neutral": 0.9167
+          },
+          "degenerate": true,
+          "collapse_reason": "mean entropy 0.30 (<= 0.30)",
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.4374,
+            0.5781
+          ],
+          "balanced_accuracy_ci95": [
+            0.4546,
+            0.5558
+          ],
+          "majority_share_ci95": [
+            0.479,
+            0.6146
+          ],
+          "entropy_ci95": [
+            0.2654,
+            0.3336
+          ],
+          "degenerate_probability": 0.514,
+          "delta_balanced_accuracy": -0.2865,
+          "delta_balanced_accuracy_ci95": [
+            -0.3698,
+            -0.2083
+          ],
+          "delta_accuracy": -0.2865,
+          "mcnemar_b_clean_right_cond_wrong": 67,
+          "mcnemar_c_clean_wrong_cond_right": 12,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.6124
+        },
+        {
+          "condition": "lowpass:600.0",
+          "family": "lowpass",
+          "value": 600.0,
+          "unit": "Hz",
+          "wall_seconds": 12.6,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4583,
+          "balanced_accuracy": 0.4583,
+          "macro_f1": 0.3917,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.6562,
+          "mean_normalised_entropy": 0.2277,
+          "per_class_recall": {
+            "angry": 0.5417,
+            "happy": 0.0208,
+            "sad": 0.2708,
+            "neutral": 1.0
+          },
+          "degenerate": true,
+          "collapse_reason": "mean entropy 0.23 (<= 0.30)",
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3906,
+            0.526
+          ],
+          "balanced_accuracy_ci95": [
+            0.4132,
+            0.5078
+          ],
+          "majority_share_ci95": [
+            0.5885,
+            0.724
+          ],
+          "entropy_ci95": [
+            0.1954,
+            0.2605
+          ],
+          "degenerate_probability": 1.0,
+          "delta_balanced_accuracy": -0.3334,
+          "delta_balanced_accuracy_ci95": [
+            -0.4167,
+            -0.25
+          ],
+          "delta_accuracy": -0.3333,
+          "mcnemar_b_clean_right_cond_wrong": 75,
+          "mcnemar_c_clean_wrong_cond_right": 11,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.7063
+        }
+      ]
+    },
+    "Session3": {
+      "n_utterances": 192,
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "family": "gaussian_snr",
+          "value": 7.5,
+          "unit": "dB",
+          "wall_seconds": 13.1,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4688,
+          "balanced_accuracy": 0.4688,
+          "macro_f1": 0.439,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.4323,
+          "mean_normalised_entropy": 0.4822,
+          "per_class_recall": {
+            "angry": 0.1042,
+            "happy": 0.5,
+            "sad": 0.5417,
+            "neutral": 0.7292
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3958,
+            0.5365
+          ],
+          "balanced_accuracy_ci95": [
+            0.4042,
+            0.5319
+          ],
+          "majority_share_ci95": [
+            0.3802,
+            0.5
+          ],
+          "entropy_ci95": [
+            0.4512,
+            0.5137
+          ],
+          "degenerate_probability": 0.0,
+          "delta_balanced_accuracy": -0.3489,
+          "delta_balanced_accuracy_ci95": [
+            -0.4271,
+            -0.276
+          ],
+          "delta_accuracy": -0.349,
+          "mcnemar_b_clean_right_cond_wrong": 74,
+          "mcnemar_c_clean_wrong_cond_right": 7,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.751
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "family": "gaussian_snr",
+          "value": 4.0,
+          "unit": "dB",
+          "wall_seconds": 13.0,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.401,
+          "balanced_accuracy": 0.401,
+          "macro_f1": 0.3522,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.4427,
+          "mean_normalised_entropy": 0.4347,
+          "per_class_recall": {
+            "angry": 0.0208,
+            "happy": 0.5417,
+            "sad": 0.3333,
+            "neutral": 0.7083
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3333,
+            0.474
+          ],
+          "balanced_accuracy_ci95": [
+            0.3405,
+            0.4625
+          ],
+          "majority_share_ci95": [
+            0.4271,
+            0.5208
+          ],
+          "entropy_ci95": [
+            0.4092,
+            0.4619
+          ],
+          "degenerate_probability": 0.0,
+          "delta_balanced_accuracy": -0.4167,
+          "delta_balanced_accuracy_ci95": [
+            -0.5,
+            -0.3333
+          ],
+          "delta_accuracy": -0.4167,
+          "mcnemar_b_clean_right_cond_wrong": 87,
+          "mcnemar_c_clean_wrong_cond_right": 7,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.8878
+        },
+        {
+          "condition": "lowpass:900.0",
+          "family": "lowpass",
+          "value": 900.0,
+          "unit": "Hz",
+          "wall_seconds": 13.0,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4688,
+          "balanced_accuracy": 0.4688,
+          "macro_f1": 0.4079,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.5417,
+          "mean_normalised_entropy": 0.3097,
+          "per_class_recall": {
+            "angry": 0.75,
+            "happy": 0.0417,
+            "sad": 0.2917,
+            "neutral": 0.7917
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.401,
+            0.5366
+          ],
+          "balanced_accuracy_ci95": [
+            0.4134,
+            0.5236
+          ],
+          "majority_share_ci95": [
+            0.4688,
+            0.6146
+          ],
+          "entropy_ci95": [
+            0.2775,
+            0.3416
+          ],
+          "degenerate_probability": 0.2865,
+          "delta_balanced_accuracy": -0.3489,
+          "delta_balanced_accuracy_ci95": [
+            -0.4271,
+            -0.2708
+          ],
+          "delta_accuracy": -0.349,
+          "mcnemar_b_clean_right_cond_wrong": 76,
+          "mcnemar_c_clean_wrong_cond_right": 9,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.751
+        },
+        {
+          "condition": "lowpass:600.0",
+          "family": "lowpass",
+          "value": 600.0,
+          "unit": "Hz",
+          "wall_seconds": 13.0,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.375,
+          "balanced_accuracy": 0.375,
+          "macro_f1": 0.3213,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.7917,
+          "mean_normalised_entropy": 0.2168,
+          "per_class_recall": {
+            "angry": 0.2708,
+            "happy": 0.1042,
+            "sad": 0.1667,
+            "neutral": 0.9583
+          },
+          "degenerate": true,
+          "collapse_reason": "majority share 0.79 (>= 0.75)",
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3073,
+            0.4531
+          ],
+          "balanced_accuracy_ci95": [
+            0.3271,
+            0.427
+          ],
+          "majority_share_ci95": [
+            0.7344,
+            0.849
+          ],
+          "entropy_ci95": [
+            0.1798,
+            0.2544
+          ],
+          "degenerate_probability": 1.0,
+          "delta_balanced_accuracy": -0.4427,
+          "delta_balanced_accuracy_ci95": [
+            -0.526,
+            -0.3594
+          ],
+          "delta_accuracy": -0.4427,
+          "mcnemar_b_clean_right_cond_wrong": 95,
+          "mcnemar_c_clean_wrong_cond_right": 10,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.9412
+        }
+      ]
+    },
+    "Session4": {
+      "n_utterances": 192,
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "family": "gaussian_snr",
+          "value": 7.5,
+          "unit": "dB",
+          "wall_seconds": 13.4,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4427,
+          "balanced_accuracy": 0.4427,
+          "macro_f1": 0.414,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "happy",
+          "majority_share": 0.5365,
+          "mean_normalised_entropy": 0.4967,
+          "per_class_recall": {
+            "angry": 0.1875,
+            "happy": 0.8333,
+            "sad": 0.2708,
+            "neutral": 0.4792
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.375,
+            0.5156
+          ],
+          "balanced_accuracy_ci95": [
+            0.3841,
+            0.5065
+          ],
+          "majority_share_ci95": [
+            0.4635,
+            0.6094
+          ],
+          "entropy_ci95": [
+            0.4676,
+            0.5235
+          ],
+          "degenerate_probability": 0.0,
+          "delta_balanced_accuracy": -0.401,
+          "delta_balanced_accuracy_ci95": [
+            -0.4896,
+            -0.3125
+          ],
+          "delta_accuracy": -0.401,
+          "mcnemar_b_clean_right_cond_wrong": 93,
+          "mcnemar_c_clean_wrong_cond_right": 16,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.8728
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "family": "gaussian_snr",
+          "value": 4.0,
+          "unit": "dB",
+          "wall_seconds": 13.4,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.3125,
+          "balanced_accuracy": 0.3125,
+          "macro_f1": 0.2369,
+          "chance_level": 0.25,
+          "distinct_predictions": 3,
+          "majority_class": "happy",
+          "majority_share": 0.7344,
+          "mean_normalised_entropy": 0.4371,
+          "per_class_recall": {
+            "angry": 0.0,
+            "happy": 0.8542,
+            "sad": 0.1458,
+            "neutral": 0.25
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.2448,
+            0.3802
+          ],
+          "balanced_accuracy_ci95": [
+            0.2672,
+            0.3596
+          ],
+          "majority_share_ci95": [
+            0.6719,
+            0.7969
+          ],
+          "entropy_ci95": [
+            0.4114,
+            0.462
+          ],
+          "degenerate_probability": 0.3535,
+          "delta_balanced_accuracy": -0.5312,
+          "delta_balanced_accuracy_ci95": [
+            -0.6198,
+            -0.4427
+          ],
+          "delta_accuracy": -0.5312,
+          "mcnemar_b_clean_right_cond_wrong": 116,
+          "mcnemar_c_clean_wrong_cond_right": 14,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -1.1424
+        },
+        {
+          "condition": "lowpass:900.0",
+          "family": "lowpass",
+          "value": 900.0,
+          "unit": "Hz",
+          "wall_seconds": 13.3,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.5521,
+          "balanced_accuracy": 0.5521,
+          "macro_f1": 0.4883,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.4375,
+          "mean_normalised_entropy": 0.3258,
+          "per_class_recall": {
+            "angry": 0.8958,
+            "happy": 0.0417,
+            "sad": 0.5208,
+            "neutral": 0.75
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.4844,
+            0.6198
+          ],
+          "balanced_accuracy_ci95": [
+            0.4997,
+            0.6024
+          ],
+          "majority_share_ci95": [
+            0.3853,
+            0.5104
+          ],
+          "entropy_ci95": [
+            0.2926,
+            0.3592
+          ],
+          "degenerate_probability": 0.0695,
+          "delta_balanced_accuracy": -0.2916,
+          "delta_balanced_accuracy_ci95": [
+            -0.3646,
+            -0.2188
+          ],
+          "delta_accuracy": -0.2917,
+          "mcnemar_b_clean_right_cond_wrong": 63,
+          "mcnemar_c_clean_wrong_cond_right": 7,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.6536
+        },
+        {
+          "condition": "lowpass:600.0",
+          "family": "lowpass",
+          "value": 600.0,
+          "unit": "Hz",
+          "wall_seconds": 13.4,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4427,
+          "balanced_accuracy": 0.4427,
+          "macro_f1": 0.39,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.6771,
+          "mean_normalised_entropy": 0.255,
+          "per_class_recall": {
+            "angry": 0.5208,
+            "happy": 0.0417,
+            "sad": 0.2708,
+            "neutral": 0.9375
+          },
+          "degenerate": true,
+          "collapse_reason": "mean entropy 0.26 (<= 0.30)",
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.375,
+            0.5156
+          ],
+          "balanced_accuracy_ci95": [
+            0.3926,
+            0.4945
+          ],
+          "majority_share_ci95": [
+            0.6094,
+            0.7396
+          ],
+          "entropy_ci95": [
+            0.2226,
+            0.2882
+          ],
+          "degenerate_probability": 0.9965,
+          "delta_balanced_accuracy": -0.401,
+          "delta_balanced_accuracy_ci95": [
+            -0.4844,
+            -0.3125
+          ],
+          "delta_accuracy": -0.401,
+          "mcnemar_b_clean_right_cond_wrong": 92,
+          "mcnemar_c_clean_wrong_cond_right": 15,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.8728
+        }
+      ]
+    },
+    "Session5": {
+      "n_utterances": 192,
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "family": "gaussian_snr",
+          "value": 7.5,
+          "unit": "dB",
+          "wall_seconds": 11.8,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4062,
+          "balanced_accuracy": 0.4062,
+          "macro_f1": 0.3652,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "happy",
+          "majority_share": 0.6042,
+          "mean_normalised_entropy": 0.4172,
+          "per_class_recall": {
+            "angry": 0.0208,
+            "happy": 0.7083,
+            "sad": 0.3958,
+            "neutral": 0.5
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3385,
+            0.4792
+          ],
+          "balanced_accuracy_ci95": [
+            0.3441,
+            0.4672
+          ],
+          "majority_share_ci95": [
+            0.5365,
+            0.6719
+          ],
+          "entropy_ci95": [
+            0.387,
+            0.448
+          ],
+          "degenerate_probability": 0.0,
+          "delta_balanced_accuracy": -0.4011,
+          "delta_balanced_accuracy_ci95": [
+            -0.4896,
+            -0.3125
+          ],
+          "delta_accuracy": -0.401,
+          "mcnemar_b_clean_right_cond_wrong": 92,
+          "mcnemar_c_clean_wrong_cond_right": 15,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.8506
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "family": "gaussian_snr",
+          "value": 4.0,
+          "unit": "dB",
+          "wall_seconds": 11.9,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.3229,
+          "balanced_accuracy": 0.3229,
+          "macro_f1": 0.269,
+          "chance_level": 0.25,
+          "distinct_predictions": 3,
+          "majority_class": "happy",
+          "majority_share": 0.7396,
+          "mean_normalised_entropy": 0.3542,
+          "per_class_recall": {
+            "angry": 0.0,
+            "happy": 0.7292,
+            "sad": 0.1667,
+            "neutral": 0.3958
+          },
+          "degenerate": false,
+          "collapse_reason": null,
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.2552,
+            0.3906
+          ],
+          "balanced_accuracy_ci95": [
+            0.269,
+            0.3729
+          ],
+          "majority_share_ci95": [
+            0.6771,
+            0.8021
+          ],
+          "entropy_ci95": [
+            0.3253,
+            0.3834
+          ],
+          "degenerate_probability": 0.406,
+          "delta_balanced_accuracy": -0.4844,
+          "delta_balanced_accuracy_ci95": [
+            -0.5781,
+            -0.3958
+          ],
+          "delta_accuracy": -0.4844,
+          "mcnemar_b_clean_right_cond_wrong": 106,
+          "mcnemar_c_clean_wrong_cond_right": 13,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -1.0239
+        },
+        {
+          "condition": "lowpass:900.0",
+          "family": "lowpass",
+          "value": 900.0,
+          "unit": "Hz",
+          "wall_seconds": 11.8,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.5469,
+          "balanced_accuracy": 0.5469,
+          "macro_f1": 0.4978,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.5208,
+          "mean_normalised_entropy": 0.2965,
+          "per_class_recall": {
+            "angry": 0.7708,
+            "happy": 0.0833,
+            "sad": 0.4583,
+            "neutral": 0.875
+          },
+          "degenerate": true,
+          "collapse_reason": "mean entropy 0.30 (<= 0.30)",
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.4792,
+            0.6198
+          ],
+          "balanced_accuracy_ci95": [
+            0.4917,
+            0.6032
+          ],
+          "majority_share_ci95": [
+            0.4479,
+            0.5938
+          ],
+          "entropy_ci95": [
+            0.2665,
+            0.3266
+          ],
+          "degenerate_probability": 0.5845,
+          "delta_balanced_accuracy": -0.2605,
+          "delta_balanced_accuracy_ci95": [
+            -0.3439,
+            -0.1667
+          ],
+          "delta_accuracy": -0.2604,
+          "mcnemar_b_clean_right_cond_wrong": 69,
+          "mcnemar_c_clean_wrong_cond_right": 19,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.5681
+        },
+        {
+          "condition": "lowpass:600.0",
+          "family": "lowpass",
+          "value": 600.0,
+          "unit": "Hz",
+          "wall_seconds": 11.8,
+          "valid": true,
+          "transform_failures": 0,
+          "transform_failure_types": {},
+          "clips_actually_modified": 192,
+          "n": 192,
+          "accuracy": 0.4115,
+          "balanced_accuracy": 0.4115,
+          "macro_f1": 0.3412,
+          "chance_level": 0.25,
+          "distinct_predictions": 4,
+          "majority_class": "neutral",
+          "majority_share": 0.7292,
+          "mean_normalised_entropy": 0.2363,
+          "per_class_recall": {
+            "angry": 0.4583,
+            "happy": 0.0,
+            "sad": 0.2083,
+            "neutral": 0.9792
+          },
+          "degenerate": true,
+          "collapse_reason": "mean entropy 0.24 (<= 0.30)",
+          "bootstrap_b": 2000,
+          "accuracy_ci95": [
+            0.3438,
+            0.4844
+          ],
+          "balanced_accuracy_ci95": [
+            0.3643,
+            0.4565
+          ],
+          "majority_share_ci95": [
+            0.6667,
+            0.7917
+          ],
+          "entropy_ci95": [
+            0.2034,
+            0.2699
+          ],
+          "degenerate_probability": 1.0,
+          "delta_balanced_accuracy": -0.3959,
+          "delta_balanced_accuracy_ci95": [
+            -0.4844,
+            -0.3073
+          ],
+          "delta_accuracy": -0.3958,
+          "mcnemar_b_clean_right_cond_wrong": 92,
+          "mcnemar_c_clean_wrong_cond_right": 16,
+          "mcnemar_exact_p": 0.0,
+          "cohens_h_vs_clean": -0.84
+        }
+      ]
+    }
+  }
+}

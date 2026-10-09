@@ -1,0 +1,32 @@
+﻿plan: gaussian_snr -> [30, 15]  (full session, n=1241, bootstrap 2000)
+running battery (this takes a few minutes) ...
+  status=complete completed=2/2
+
+=== field-by-field comparison, battery vs earlier script run ===
+  gaussian_snr:30.0  DIFFERS
+      accuracy: battery=0.6954 base=0.7027
+      accuracy_ci95: battery=[0.6696, 0.7204] base=[0.6769, 0.7276]
+      balanced_accuracy: battery=0.7212 base=0.7325
+      balanced_accuracy_ci95: battery=[0.6961, 0.7447] base=[0.7085, 0.7552]
+      cohens_h_vs_clean: battery=-0.1268 base=-0.1015
+      delta_accuracy: battery=-0.0782 base=-0.0709
+      delta_balanced_accuracy: battery=-0.055 base=-0.0437
+      delta_balanced_accuracy_ci95: battery=[-0.1024, -0.0556] base=[-0.0951, -0.0483]
+  gaussian_snr:15.0  DIFFERS
+      accuracy: battery=0.6084 base=0.6076
+      accuracy_ci95: battery=[0.5818, 0.6358] base=[0.581, 0.6342]
+      balanced_accuracy: battery=0.584 base=0.5839
+      balanced_accuracy_ci95: battery=[0.5556, 0.6117] base=[0.5544, 0.6124]
+      cohens_h_vs_clean: battery=-0.4162 base=-0.4165
+      delta_accuracy: battery=-0.1652 base=-0.166
+      delta_balanced_accuracy: battery=-0.1921 base=-0.1923
+      delta_balanced_accuracy_ci95: battery=[-0.1934, -0.1354] base=[-0.1934, -0.1378]
+
+=== clean arm comparison ===
+  clean arm: IDENTICAL
+
+=== thresholds block ===
+  battery thresholds: ['gaussian_snr']
+  baseline thresholds: []
+
+RESULT: MISMATCH 鈥?investigate before relying on the record

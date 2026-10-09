@@ -1,0 +1,336 @@
+{
+  "note": "re-measured with the RNG-seeding and roll-off fixes (docs/BUGLOG.md BUG-3, BUG-4)",
+  "conditions": "gaussian_snr:7.5,gaussian_snr:4,lowpass:900,lowpass:600",
+  "per_class": 48,
+  "cross_session": {
+    "Session1": {
+      "n": 192,
+      "clean_balanced_accuracy": 0.6354,
+      "clean_ci95": [
+        0.5678,
+        0.699
+      ],
+      "per_class_recall": {
+        "angry": 0.6458,
+        "happy": 0.7083,
+        "sad": 0.8125,
+        "neutral": 0.375
+      },
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "balanced_accuracy": 0.3177,
+          "balanced_accuracy_ci95": [
+            0.2693,
+            0.3702
+          ],
+          "majority_share": 0.6875,
+          "degenerate": false,
+          "degenerate_probability": 0.03
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "balanced_accuracy": 0.2552,
+          "balanced_accuracy_ci95": [
+            0.2158,
+            0.2933
+          ],
+          "majority_share": 0.8281,
+          "degenerate": true,
+          "degenerate_probability": 0.996
+        },
+        {
+          "condition": "lowpass:900.0",
+          "balanced_accuracy": 0.4479,
+          "balanced_accuracy_ci95": [
+            0.3879,
+            0.5057
+          ],
+          "majority_share": 0.4219,
+          "degenerate": false,
+          "degenerate_probability": 0.001
+        },
+        {
+          "condition": "lowpass:600.0",
+          "balanced_accuracy": 0.4583,
+          "balanced_accuracy_ci95": [
+            0.4037,
+            0.5125
+          ],
+          "majority_share": 0.5781,
+          "degenerate": true,
+          "degenerate_probability": 0.671
+        }
+      ]
+    },
+    "Session2": {
+      "n": 192,
+      "clean_balanced_accuracy": 0.7917,
+      "clean_ci95": [
+        0.7387,
+        0.8479
+      ],
+      "per_class_recall": {
+        "angry": 0.8125,
+        "happy": 0.6667,
+        "sad": 0.875,
+        "neutral": 0.8125
+      },
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "balanced_accuracy": 0.5104,
+          "balanced_accuracy_ci95": [
+            0.4442,
+            0.5753
+          ],
+          "majority_share": 0.4635,
+          "degenerate": false,
+          "degenerate_probability": 0.0
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "balanced_accuracy": 0.375,
+          "balanced_accuracy_ci95": [
+            0.3207,
+            0.4312
+          ],
+          "majority_share": 0.6042,
+          "degenerate": false,
+          "degenerate_probability": 0.0
+        },
+        {
+          "condition": "lowpass:900.0",
+          "balanced_accuracy": 0.5521,
+          "balanced_accuracy_ci95": [
+            0.5045,
+            0.601
+          ],
+          "majority_share": 0.5312,
+          "degenerate": true,
+          "degenerate_probability": 0.4885
+        },
+        {
+          "condition": "lowpass:600.0",
+          "balanced_accuracy": 0.3594,
+          "balanced_accuracy_ci95": [
+            0.3185,
+            0.4027
+          ],
+          "majority_share": 0.7865,
+          "degenerate": true,
+          "degenerate_probability": 1.0
+        }
+      ]
+    },
+    "Session3": {
+      "n": 192,
+      "clean_balanced_accuracy": 0.8177,
+      "clean_ci95": [
+        0.7634,
+        0.8701
+      ],
+      "per_class_recall": {
+        "angry": 0.8542,
+        "happy": 0.75,
+        "sad": 0.8958,
+        "neutral": 0.7708
+      },
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "balanced_accuracy": 0.4479,
+          "balanced_accuracy_ci95": [
+            0.382,
+            0.5123
+          ],
+          "majority_share": 0.4427,
+          "degenerate": false,
+          "degenerate_probability": 0.0
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "balanced_accuracy": 0.401,
+          "balanced_accuracy_ci95": [
+            0.3392,
+            0.4616
+          ],
+          "majority_share": 0.4375,
+          "degenerate": false,
+          "degenerate_probability": 0.0
+        },
+        {
+          "condition": "lowpass:900.0",
+          "balanced_accuracy": 0.4479,
+          "balanced_accuracy_ci95": [
+            0.3945,
+            0.5028
+          ],
+          "majority_share": 0.5208,
+          "degenerate": false,
+          "degenerate_probability": 0.1115
+        },
+        {
+          "condition": "lowpass:600.0",
+          "balanced_accuracy": 0.3542,
+          "balanced_accuracy_ci95": [
+            0.3141,
+            0.3959
+          ],
+          "majority_share": 0.8438,
+          "degenerate": true,
+          "degenerate_probability": 1.0
+        }
+      ]
+    },
+    "Session4": {
+      "n": 192,
+      "clean_balanced_accuracy": 0.8438,
+      "clean_ci95": [
+        0.7949,
+        0.8905
+      ],
+      "per_class_recall": {
+        "angry": 0.9583,
+        "happy": 0.75,
+        "sad": 0.9583,
+        "neutral": 0.7083
+      },
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "balanced_accuracy": 0.4271,
+          "balanced_accuracy_ci95": [
+            0.3679,
+            0.4884
+          ],
+          "majority_share": 0.5469,
+          "degenerate": false,
+          "degenerate_probability": 0.0
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "balanced_accuracy": 0.2708,
+          "balanced_accuracy_ci95": [
+            0.233,
+            0.3128
+          ],
+          "majority_share": 0.7865,
+          "degenerate": true,
+          "degenerate_probability": 0.902
+        },
+        {
+          "condition": "lowpass:900.0",
+          "balanced_accuracy": 0.5365,
+          "balanced_accuracy_ci95": [
+            0.4866,
+            0.5875
+          ],
+          "majority_share": 0.4323,
+          "degenerate": false,
+          "degenerate_probability": 0.0195
+        },
+        {
+          "condition": "lowpass:600.0",
+          "balanced_accuracy": 0.3906,
+          "balanced_accuracy_ci95": [
+            0.3453,
+            0.4375
+          ],
+          "majority_share": 0.7604,
+          "degenerate": true,
+          "degenerate_probability": 0.9995
+        }
+      ]
+    },
+    "Session5": {
+      "n": 192,
+      "clean_balanced_accuracy": 0.8073,
+      "clean_ci95": [
+        0.7521,
+        0.8603
+      ],
+      "per_class_recall": {
+        "angry": 0.7917,
+        "happy": 0.7917,
+        "sad": 0.9167,
+        "neutral": 0.7292
+      },
+      "results": [
+        {
+          "condition": "gaussian_snr:7.5",
+          "balanced_accuracy": 0.4271,
+          "balanced_accuracy_ci95": [
+            0.368,
+            0.488
+          ],
+          "majority_share": 0.6198,
+          "degenerate": false,
+          "degenerate_probability": 0.0
+        },
+        {
+          "condition": "gaussian_snr:4.0",
+          "balanced_accuracy": 0.3385,
+          "balanced_accuracy_ci95": [
+            0.2827,
+            0.3923
+          ],
+          "majority_share": 0.7292,
+          "degenerate": false,
+          "degenerate_probability": 0.294
+        },
+        {
+          "condition": "lowpass:900.0",
+          "balanced_accuracy": 0.5417,
+          "balanced_accuracy_ci95": [
+            0.4872,
+            0.5934
+          ],
+          "majority_share": 0.5312,
+          "degenerate": true,
+          "degenerate_probability": 0.536
+        },
+        {
+          "condition": "lowpass:600.0",
+          "balanced_accuracy": 0.4062,
+          "balanced_accuracy_ci95": [
+            0.361,
+            0.4543
+          ],
+          "majority_share": 0.75,
+          "degenerate": true,
+          "degenerate_probability": 1.0
+        }
+      ]
+    }
+  },
+  "seed_stability": {
+    "gaussian_snr:7.5": {
+      "collapsed_on": 0,
+      "of_draws": 5,
+      "stable": true
+    },
+    "gaussian_snr:4": {
+      "collapsed_on": 0,
+      "of_draws": 5,
+      "stable": true
+    },
+    "lowpass:900": {
+      "collapsed_on": 2,
+      "of_draws": 5,
+      "stable": false
+    },
+    "lowpass:600": {
+      "collapsed_on": 5,
+      "of_draws": 5,
+      "stable": true
+    }
+  },
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    20261008
+  ]
+}

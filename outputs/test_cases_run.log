@@ -1,0 +1,35 @@
+﻿  [normal  ] list the perturbation catalogue
+           -> rc=0 PASS
+  [normal  ] clean baseline on a fixed sample
+           -> rc=0 PASS
+  [normal  ] a tolerated perturbation
+           -> rc=0 PASS
+  [boundary] arithmetic no-op must show exactly zero effect
+           -> rc=0 PASS
+  [boundary] the tool must bracket a threshold, not report a point
+           -> rc=0 PASS
+  [boundary] regression: the v1 clipping defect must stay fixed
+           -> rc=0 PASS
+  [failure ] model directory does not exist
+           -> rc=3 PASS
+  [failure ] model path is a file, not a directory
+           -> rc=3 PASS
+  [failure ] model directory is incomplete
+           -> rc=3 PASS
+  [failure ] unknown perturbation family
+           -> rc=2 PASS
+  [failure ] non-numeric value for a numeric family
+           -> rc=2 PASS
+  [failure ] condition missing the value
+           -> rc=2 PASS
+  [failure ] sweep without conditions
+           -> rc=2 PASS
+  [failure ] curve without a range
+           -> rc=2 PASS
+  [failure ] session that does not exist in the dataset
+           -> rc=4 PASS
+  [failure ] audio at the wrong sample rate
+           -> rc=4 PASS
+
+wrote D:\ser-audit\docs\TEST_CASES.md
+16/16 passed

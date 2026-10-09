@@ -1,0 +1,306 @@
+{
+  "command": "sweep",
+  "model_fingerprint": "dac0f46128deec04",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce GTX 1650",
+  "session": "Session5",
+  "per_class": 48,
+  "n_utterances": 192,
+  "bootstrap_b": 2000,
+  "clean_reference": {
+    "n": 192,
+    "accuracy": 0.776,
+    "balanced_accuracy": 0.776,
+    "macro_f1": 0.7766,
+    "chance_level": 0.25,
+    "distinct_predictions": 4,
+    "majority_class": "neutral",
+    "majority_share": 0.2656,
+    "mean_normalised_entropy": 0.3716,
+    "per_class_recall": {
+      "angry": 0.7292,
+      "happy": 0.7292,
+      "sad": 0.9167,
+      "neutral": 0.7292
+    },
+    "degenerate": false,
+    "bootstrap_b": 2000,
+    "accuracy_ci95": [
+      0.7135,
+      0.8333
+    ],
+    "balanced_accuracy_ci95": [
+      0.7174,
+      0.8316
+    ],
+    "majority_share_ci95": [
+      0.2604,
+      0.3385
+    ],
+    "entropy_ci95": [
+      0.3357,
+      0.4087
+    ],
+    "degenerate_probability": 0.0
+  },
+  "results": [
+    {
+      "condition": "gaussian_snr:7.5",
+      "family": "gaussian_snr",
+      "value": 7.5,
+      "unit": "dB",
+      "wall_seconds": 13.5,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 192,
+      "n": 192,
+      "accuracy": 0.4427,
+      "balanced_accuracy": 0.4427,
+      "macro_f1": 0.4047,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "happy",
+      "majority_share": 0.5521,
+      "mean_normalised_entropy": 0.458,
+      "per_class_recall": {
+        "angry": 0.0417,
+        "happy": 0.7083,
+        "sad": 0.4583,
+        "neutral": 0.5625
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.3749,
+        0.5156
+      ],
+      "balanced_accuracy_ci95": [
+        0.3801,
+        0.5036
+      ],
+      "majority_share_ci95": [
+        0.4844,
+        0.6198
+      ],
+      "entropy_ci95": [
+        0.4289,
+        0.4857
+      ],
+      "degenerate_probability": 0.0,
+      "delta_balanced_accuracy": -0.3334,
+      "delta_balanced_accuracy_ci95": [
+        -0.4167,
+        -0.25
+      ],
+      "delta_accuracy": -0.3333,
+      "mcnemar_b_clean_right_cond_wrong": 75,
+      "mcnemar_c_clean_wrong_cond_right": 11,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.6998
+    },
+    {
+      "condition": "gaussian_snr:4.0",
+      "family": "gaussian_snr",
+      "value": 4.0,
+      "unit": "dB",
+      "wall_seconds": 13.5,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 192,
+      "n": 192,
+      "accuracy": 0.3177,
+      "balanced_accuracy": 0.3177,
+      "macro_f1": 0.2513,
+      "chance_level": 0.25,
+      "distinct_predictions": 3,
+      "majority_class": "happy",
+      "majority_share": 0.7396,
+      "mean_normalised_entropy": 0.3725,
+      "per_class_recall": {
+        "angry": 0.0,
+        "happy": 0.7917,
+        "sad": 0.1458,
+        "neutral": 0.3333
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.25,
+        0.3854
+      ],
+      "balanced_accuracy_ci95": [
+        0.2666,
+        0.3693
+      ],
+      "majority_share_ci95": [
+        0.6771,
+        0.7969
+      ],
+      "entropy_ci95": [
+        0.3467,
+        0.4002
+      ],
+      "degenerate_probability": 0.383,
+      "delta_balanced_accuracy": -0.4584,
+      "delta_balanced_accuracy_ci95": [
+        -0.5469,
+        -0.3698
+      ],
+      "delta_accuracy": -0.4583,
+      "mcnemar_b_clean_right_cond_wrong": 101,
+      "mcnemar_c_clean_wrong_cond_right": 13,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.9581
+    },
+    {
+      "condition": "lowpass:900.0",
+      "family": "lowpass",
+      "value": 900.0,
+      "unit": "Hz",
+      "wall_seconds": 13.4,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 192,
+      "n": 192,
+      "accuracy": 0.5677,
+      "balanced_accuracy": 0.5677,
+      "macro_f1": 0.5164,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.5208,
+      "mean_normalised_entropy": 0.315,
+      "per_class_recall": {
+        "angry": 0.625,
+        "happy": 0.0833,
+        "sad": 0.6042,
+        "neutral": 0.9583
+      },
+      "degenerate": false,
+      "collapse_reason": null,
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.5,
+        0.6354
+      ],
+      "balanced_accuracy_ci95": [
+        0.5118,
+        0.6199
+      ],
+      "majority_share_ci95": [
+        0.4479,
+        0.5887
+      ],
+      "entropy_ci95": [
+        0.2836,
+        0.3473
+      ],
+      "degenerate_probability": 0.182,
+      "delta_balanced_accuracy": -0.2084,
+      "delta_balanced_accuracy_ci95": [
+        -0.2917,
+        -0.125
+      ],
+      "delta_accuracy": -0.2083,
+      "mcnemar_b_clean_right_cond_wrong": 56,
+      "mcnemar_c_clean_wrong_cond_right": 16,
+      "mcnemar_exact_p": 2e-06,
+      "cohens_h_vs_clean": -0.4491
+    },
+    {
+      "condition": "lowpass:600.0",
+      "family": "lowpass",
+      "value": 600.0,
+      "unit": "Hz",
+      "wall_seconds": 13.4,
+      "valid": true,
+      "transform_failures": 0,
+      "transform_failure_types": {},
+      "clips_actually_modified": 192,
+      "n": 192,
+      "accuracy": 0.401,
+      "balanced_accuracy": 0.401,
+      "macro_f1": 0.3419,
+      "chance_level": 0.25,
+      "distinct_predictions": 4,
+      "majority_class": "neutral",
+      "majority_share": 0.7396,
+      "mean_normalised_entropy": 0.2244,
+      "per_class_recall": {
+        "angry": 0.2708,
+        "happy": 0.0625,
+        "sad": 0.2917,
+        "neutral": 0.9792
+      },
+      "degenerate": true,
+      "collapse_reason": "mean entropy 0.22 (<= 0.30)",
+      "bootstrap_b": 2000,
+      "accuracy_ci95": [
+        0.3333,
+        0.474
+      ],
+      "balanced_accuracy_ci95": [
+        0.3524,
+        0.4527
+      ],
+      "majority_share_ci95": [
+        0.6771,
+        0.8021
+      ],
+      "entropy_ci95": [
+        0.1938,
+        0.2577
+      ],
+      "degenerate_probability": 1.0,
+      "delta_balanced_accuracy": -0.375,
+      "delta_balanced_accuracy_ci95": [
+        -0.4583,
+        -0.2865
+      ],
+      "delta_accuracy": -0.375,
+      "mcnemar_b_clean_right_cond_wrong": 85,
+      "mcnemar_c_clean_wrong_cond_right": 13,
+      "mcnemar_exact_p": 0.0,
+      "cohens_h_vs_clean": -0.7842
+    }
+  ],
+  "degenerate_conditions": [
+    "lowpass:600.0"
+  ],
+  "invalid_conditions": [],
+  "multiple_comparison": {
+    "method": "holm-bonferroni",
+    "alpha": 0.05,
+    "m_conditions": 4,
+    "adjusted_p": {
+      "gaussian_snr:7.5": 0.0,
+      "gaussian_snr:4.0": 0.0,
+      "lowpass:900.0": 2e-06,
+      "lowpass:600.0": 0.0
+    },
+    "significant_after_correction": [
+      "gaussian_snr:4.0",
+      "gaussian_snr:7.5",
+      "lowpass:600.0",
+      "lowpass:900.0"
+    ]
+  },
+  "run_manifest": {
+    "tool": "ser-audit",
+    "tool_version": "2.0",
+    "generated_at": "2026-10-09T03:32:53.397789+00:00",
+    "seed": 20261008,
+    "sample_seed": 404,
+    "bootstrap_b": 2000,
+    "alpha": 0.05,
+    "host": {
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce GTX 1650"
+    }
+  }
+}

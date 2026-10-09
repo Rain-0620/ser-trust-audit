@@ -1,0 +1,2952 @@
+{
+  "session": "Session5",
+  "n_utterances": 48,
+  "clean_accuracy": 0.7291666666666666,
+  "ms_per_clip": 79.25529778003693,
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce GTX 1650",
+  "conditions": [
+    {
+      "condition": "clean",
+      "accuracy": 0.7291666666666666,
+      "flips": 0,
+      "distinct_predictions": 4
+    },
+    {
+      "condition": "gaussian_snr20",
+      "accuracy": 0.7083333333333334,
+      "flips": 13,
+      "distinct_predictions": 4
+    },
+    {
+      "condition": "gaussian_snr10",
+      "accuracy": 0.4375,
+      "flips": 27,
+      "distinct_predictions": 4
+    },
+    {
+      "condition": "gaussian_snr0",
+      "accuracy": 0.22916666666666666,
+      "flips": 35,
+      "distinct_predictions": 2
+    },
+    {
+      "condition": "lowpass_2k",
+      "accuracy": 0.6458333333333334,
+      "flips": 15,
+      "distinct_predictions": 4
+    },
+    {
+      "condition": "clipping_p20",
+      "accuracy": 0.6458333333333334,
+      "flips": 10,
+      "distinct_predictions": 4
+    },
+    {
+      "condition": "mp3_16kbps",
+      "accuracy": 0.5625,
+      "flips": 18,
+      "distinct_predictions": 4
+    },
+    {
+      "condition": "pitch_up_4st",
+      "accuracy": 0.6666666666666666,
+      "flips": 18,
+      "distinct_predictions": 4
+    },
+    {
+      "condition": "pitch_down_4st",
+      "accuracy": 0.4791666666666667,
+      "flips": 19,
+      "distinct_predictions": 4
+    },
+    {
+      "condition": "timestretch_1_25",
+      "accuracy": 0.5416666666666666,
+      "flips": 26,
+      "distinct_predictions": 4
+    }
+  ],
+  "rows": [
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "clean",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "gaussian_snr20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "gaussian_snr10",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "gaussian_snr0",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "lowpass_2k",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "clipping_p20",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "mp3_16kbps",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "mp3_16kbps",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "mp3_16kbps",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "pitch_up_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "pitch_down_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "pitch_down_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "pitch_down_4st",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_F043",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F020",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M038",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F034",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script01_2_F017",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_M005",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script03_2_M016",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M009",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro05_F042",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M025",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script03_2_M033",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_2_F014",
+      "truth": "angry",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_F002",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M015",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_impro08_M031",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_M009",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_M005",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05F_script01_3_M005",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro03_M012",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro03_M000",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro07_F031",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro07_M020",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script02_2_M035",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script03_1_M021",
+      "truth": "happy",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_script02_2_M031",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro02_F032",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro06_M020",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "happy"
+    },
+    {
+      "utterance": "Ses05F_impro02_F005",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script02_2_F026",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro02_M010",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro06_F003",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "sad"
+    },
+    {
+      "utterance": "Ses05F_impro02_F008",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro02_F028",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_script01_1_F000",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro06_F011",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script02_2_F018",
+      "truth": "sad",
+      "condition": "timestretch_1_25",
+      "prediction": "angry"
+    },
+    {
+      "utterance": "Ses05M_impro04_F006",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F000",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro01_F012",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F003",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro08_F005",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_1b_F023",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro05_F020",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_script01_3_F007",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_F028",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro04_M022",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05F_impro08_F001",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    },
+    {
+      "utterance": "Ses05M_impro07_F019",
+      "truth": "neutral",
+      "condition": "timestretch_1_25",
+      "prediction": "neutral"
+    }
+  ]
+}

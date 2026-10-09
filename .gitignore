@@ -1,0 +1,24 @@
+# ---- environments ----
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# ---- third-party assets that are not redistributable here ----
+# audit target weights (fetched by download_model.py)
+models/
+# IEMOCAP audio (requires a signed licence)
+data/
+# dataset and selection caches
+cache/
+
+# ---- bundled tools: local ffmpeg build used only to cut the demo video ----
+tools/bin/
+
+# ---- screen recordings and video build artefacts ----
+outputs/video/
+
+# ---- scratch ----
+.hfprobe/
+*.tmp
+*.bak
