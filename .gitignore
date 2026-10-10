@@ -22,3 +22,7 @@ outputs/video/
 .hfprobe/
 *.tmp
 *.bak
+
+# ---- internal submission materials: kept locally, never published ----
+docs/COMPLIANCE.md
+docs/SUBMISSION.md
