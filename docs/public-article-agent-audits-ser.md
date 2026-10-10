@@ -327,7 +327,7 @@ self.parameters["rolloff"] = random_order * 6
 
 **关于本项目**：本文是一个"用 Agent 审计 AI 模型可信边界"作品的技术记录，使用 Agnes Harness 作为
 Agent 运行与执行底座，审计工具、审计协议与全部实验代码均为本项目自行编写。
-代码与实验记录：`<仓库链接 – 发布后补>`。
+代码与实验记录：https://github.com/Rain-0620/ser-trust-audit
 
 ---
 
