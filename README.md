@@ -70,6 +70,22 @@ That contrast is the point: it separates *a real finding* from *a threshold arte
 
 ---
 
+## Reading the work without running it
+
+Two entry points, if you want the argument rather than the code:
+
+* **[`docs/public-article-agent-audits-ser.md`](docs/public-article-agent-audits-ser.md)** — the
+  public write-up: what the agent did and why it counts, the two collapse signatures, why the
+  threshold depends on the evaluation set, and the four defects we found in our own instrument.
+* **[`trust_boundary_report.md`](trust_boundary_report.md)** — the report the agent produced, with
+  every number traceable to a file under `evidence/` or `outputs/battery/`.
+
+And if you want to see the run rather than read about it:
+**[`evidence/session/v2-agent-run.html`](evidence/session/v2-agent-run.html)** is the AGH ledger of
+the full run, rendered for a browser — 1074 events, 57 tool calls, both approval decisions.
+
+---
+
 ## Repository layout
 
 ```
