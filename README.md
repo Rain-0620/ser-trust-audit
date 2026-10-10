@@ -110,6 +110,8 @@ tools/                          analysis, verification and reporting scripts
   ...                           (session-export parsing, trace extraction, checklists)
 
 docs/
+  SUBMISSION.md                 the written submission materials: basic info, technical
+                                info, team declaration, third-party notices
   TEST_CASES.md                 the 16 test cases with expected vs actual behaviour
   BUGLOG.md                     four defects found in our own tool, with root cause + fix
   COMPLIANCE.md                 rule-by-rule conformance check for the submission
